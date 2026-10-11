@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+interface Props { href: string; light?: boolean; class?: string; }
+const { href, light = false, class: className } = Astro.props;
+---
+<a href={href} class:list={['pill-link', { light }, className]}><span><slot /></span><span class="pill-link__arrow"><Icon name="arrowUpRight" /></span></a>

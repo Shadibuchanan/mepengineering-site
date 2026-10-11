@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PillLink from '../../components/PillLink.astro';
+import Icon from '../../components/Icon.astro';
+import { services } from '../../data/services';
+import PhotoFrame from '../../components/PhotoFrame.astro';
+import expertisePhoto from '../../assets/hero/mayami-tripadvisor.jpg';
+---
+<BaseLayout title="Our Services" description="Explore Buchanan’s mechanical, electrical, plumbing, kitchen hood, fire alarm, and fire sprinkler engineering services throughout Florida.">
+  <section class="container page-intro services-intro" data-stagger>
+    <p class="eyebrow" data-reveal>Our services</p>
+    <h1 class="display-title" data-reveal>MEP engineering<br /><em>and system design</em></h1>
+    <div class="intro-bottom" data-reveal><p class="body-copy">Mechanical, electrical, plumbing, kitchen hood, fire alarm, and fire sprinkler design for residential, commercial, and industrial projects.</p></div>
+  </section>
+
+  <PhotoFrame class="container services-photo" src={expertisePhoto} alt="Mayami Wynwood dining room with woven pendant lighting, wood ceiling details, and a curved bar" caption="Mayami Wynwood · Miami, Florida" variant="wide" loading="eager" />
+
+  <section class="container service-directory" aria-label="Engineering services" data-stagger>
+    {services.map((service) => (
+      <a class="service-item" href={`/services/${service.slug}/`} data-reveal>
+        <span class="service-number">{service.number}</span>
+        <h2>{service.shortName}</h2>
+        <p>{service.summary}</p>
+        <span class="service-arrow"><Icon name="arrowUpRight" /></span>
+      </a>
+    ))}
+  </section>
+
+  <section class="container section split-layout approach">
+    <p class="eyebrow" data-reveal>Plan preparation</p>
+    <div>
+      <h2 class="section-title" data-reveal>Coordinated,<br /><em>signed and sealed plans</em></h2>
+      <div class="approach-copy" data-stagger>
+        <p class="body-copy" data-reveal>We work with architects, contractors, developers, and owners to prepare signed and sealed MEP plans. Architectural, structural, and engineering coordination is part of our process from the beginning.</p>
+        <p class="body-copy" data-reveal>Our experience with municipalities throughout Florida helps us address local plan-review requirements and support the permitting process.</p>
+      </div>
+      <PillLink href="/contact/">Discuss your project</PillLink>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .services-intro h1 { margin-top: 28px; }
+  .intro-bottom { max-width: 780px; margin-top: 28px; }
+  .intro-bottom p { margin: 0; }
+  .service-directory { border-top: 1px solid var(--line, #d9ddd4); margin-top: 65px; }
+  .service-item { display: grid; grid-template-columns: 54px 1fr 1fr 54px; align-items: center; gap: 28px; padding: 39px 0; border-bottom: 1px solid var(--line, #d9ddd4); text-decoration: none; transition: padding .25s ease; }
+  .service-number { font-size: 14px; color: var(--muted, #646b61); align-self: start; padding-top: 11px; }
+  .service-item h2 { font-size: clamp(25px, 3vw, 42px); font-weight: 400; letter-spacing: -.05em; margin: 0; }
+  .service-item p { color: var(--muted, #646b61); font-size: 18px; line-height: 1.6; max-width: 360px; margin: 0; }
+  .service-arrow { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #bec4b7; border-radius: 50%; font-size: 21px; transition: background .2s, color .2s, transform .2s; }
+  .service-item:hover .service-arrow { background: #191c18; color: #fff; transform: rotate(45deg); }
+  .approach-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin: 32px 0; }
+  .approach-copy p { margin: 0; }
+  @media (max-width: 760px) { .intro-bottom { grid-template-columns: 1fr; gap: 24px; margin-top: 32px; } .intro-bottom p { margin: 0; } .service-item { grid-template-columns: 28px 1fr 40px; gap: 14px; padding: 28px 0; } .service-item p { grid-column: 2; max-width: none; } .service-arrow { width: 38px; height: 38px; grid-row: 1 / 3; grid-column: 3; } .service-number { padding-top: 7px; } .approach-copy { grid-template-columns: 1fr; gap: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .service-item, .service-arrow { transition: none; } }
+</style>

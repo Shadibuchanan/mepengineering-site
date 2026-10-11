@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
+import PillLink from '../components/PillLink.astro';
+import { galleryItems } from '../data/gallery';
+---
+<BaseLayout title="Photo Gallery" description="Browse Buchanan P.E. Consulting's project photo collection: commercial and residential spaces, equipment, and building systems.">
+  <section class="container page-intro gallery-intro" data-stagger>
+    <p class="eyebrow" data-reveal>Our photo collection</p>
+    <h1 class="display-title" data-reveal>Project photo<br /><em>gallery.</em></h1>
+    <p class="body-copy" data-reveal>Commercial and residential spaces, equipment, and engineering details from our original project collection.</p>
+  </section>
+  <section class="container gallery-collection" aria-label="Project photographs">
+    <PhotoGallery items={galleryItems} />
+  </section>
+  <section class="container gallery-portfolio" data-reveal>
+    <div><h2 class="section-title">Project <em>information.</em></h2><p class="body-copy">Find locations, architect credits, and additional photographs in our project portfolio.</p></div>
+    <PillLink href="/projects/">Explore the portfolio</PillLink>
+  </section>
+</BaseLayout>
+<style>
+  .gallery-intro .body-copy { max-width: 680px; }
+  .gallery-collection { padding-bottom: 72px; }
+  .gallery-portfolio { display: flex; justify-content: space-between; align-items: center; gap: 35px; border-top: 1px solid var(--line); padding-block: 50px 80px; }
+  .gallery-portfolio .body-copy { margin-top: 20px; max-width: 620px; }
+  @media(max-width: 800px) { .gallery-portfolio { flex-direction: column; align-items: flex-start; } }
+</style>

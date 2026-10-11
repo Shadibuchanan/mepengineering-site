@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PillLink from '../../components/PillLink.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects, type Project } from '../../data/projects';
+import mayamiHero from '../../assets/hero/mayami-tripadvisor.jpg';
+export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
+interface Props { project: Project; }
+const { project } = Astro.props;
+const image = project.slug === 'mayami-wynwood' ? mayamiHero : project.image;
+const imageWidth = Math.min(image.width, 1440);
+const imageWidths = [...new Set([320, 480, 680, 1000, 1440, imageWidth].filter(width => width <= imageWidth))].sort((a, b) => a - b);
+const related = projects.filter(p => p.slug !== project.slug && p.sector === project.sector).slice(0,3);
+if (related.length < 3) related.push(...projects.filter(p => p.slug !== project.slug && !related.includes(p)).slice(0,3-related.length));
+---
+<BaseLayout title={project.name} description={`${project.name}, ${project.location}. Explore Buchanan P.E. Consulting’s ${project.sector.toLowerCase()} project portfolio.`} image={image}>
+  <section class="page-intro container project-intro" data-stagger><a class="back-link" href="/projects/" data-reveal><Icon name="arrowLeft" /> All projects</a><p class="eyebrow" data-reveal>{project.sector} / {project.location}</p><h1 class="display-title" data-reveal>{project.name}</h1></section>
+  <section class="container project-main" style={{ '--project-image-width': `${imageWidth}px` }}><div class="project-visual" data-reveal="image"><div class:list={['project-visual__crop', { 'photo-cutout': image.width >= 600 }]}><Image src={image} alt={project.alt} widths={imageWidths} width={imageWidth} sizes={`(max-width: 700px) min(90vw, ${imageWidth}px), min(65vw, ${imageWidth}px)`} format="webp" quality={88} loading="eager" fetchpriority="high" /></div><span>{project.name} / {project.location}</span></div><aside class="project-facts" data-reveal><p class="eyebrow">The project</p><dl><div><dt>Location</dt><dd>{project.location}</dd></div><div><dt>Sector</dt><dd>{project.sector}</dd></div><div><dt>Engineering consultant</dt><dd>Buchanan P.E. Consulting</dd></div>{project.architect && <div><dt>Architect</dt><dd>{project.architect}</dd></div>}{project.area && <div><dt>Venue area</dt><dd><span class="venue-area">{project.area.replace(' (venue)','')}</span>{project.areaSource && <a class="area-source" href={project.areaSource} target="_blank" rel="noopener noreferrer">Source: general contractor <Icon /></a>}</dd></div>}</dl><PillLink href="/contact/">Discuss a project</PillLink></aside></section>
+  <section class="container section project-overview split-layout"><p class="eyebrow" data-reveal>{project.sector}</p><div data-stagger><h2 class="section-title" data-reveal>Project overview</h2><p class="body-copy muted" data-reveal>{project.description}</p><a class="text-link" href="/services/" data-reveal>View our engineering services <Icon /></a></div></section>
+  {project.gallery?.length && <section class="container gallery" aria-label={`${project.name} project gallery`} data-stagger>{project.gallery.map(item => <Image class:list={['gallery-image', { 'photo-cutout': item.image.width >= 600 }]} style={{ '--gallery-image-width': `${Math.min(item.image.width, 1000)}px` }} src={item.image} alt={item.alt} width={Math.min(item.image.width, 1000)} format="webp" loading="lazy" data-reveal="image" />)}</section>}
+  <section class="container related-projects"><div class="related-heading" data-reveal><h2 class="section-title">Related <em>projects</em></h2><PillLink href="/projects/">All projects</PillLink></div><div class="related-grid" data-stagger>{related.map(project => <ProjectCard project={project} />)}</div></section>
+</BaseLayout>
+<style>
+  .back-link { display:inline-flex; gap:12px; align-items:center; font-size:14px; margin-bottom:32px; color:var(--muted); }
+  .project-intro > .eyebrow { margin-bottom:24px; }
+  .project-main { --project-gap:clamp(30px,4.5vw,65px); display:grid; grid-template-columns:minmax(0,var(--project-image-width)) minmax(0,340px); max-width:min(1360px,calc(var(--project-image-width) + 340px + var(--project-gap))); gap:var(--project-gap); align-items:start; }
+  .project-visual { width:100%; max-width:var(--project-image-width); min-width:0; }
+  .project-visual__crop { border-radius: 18px; overflow: hidden; }
+  .project-visual img { width:100%; height:auto; }
+  .project-visual > span { display:block; font-size:14px; color:var(--muted); margin-top:16px; }
+  .project-facts { border-top:1px solid var(--line); padding-top:26px; }
+  dl { margin-top:26px; margin-bottom:30px; }
+  dl > div { border-bottom:1px solid var(--line); padding-block:16px; }
+  dt { font-size:14px; color:var(--muted); margin-bottom:8px; }
+  dd { margin:0; font-size:18px; }
+  .venue-area { display:block; }
+  .area-source { display:inline-flex; align-items:center; gap:8px; font-size:14px; text-decoration:underline; margin-top:12px; color:var(--muted); }
+  .project-overview .body-copy { margin-top:24px; max-width:680px; }
+  .project-overview .text-link { margin-top:30px; }
+  .related-projects { padding-bottom:110px; }
+  .related-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; padding-top:35px; border-top:1px solid var(--line); margin-bottom:40px; }
+  .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .gallery { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:70px; align-items:start; }
+  .gallery-image { width:100%; max-width:var(--gallery-image-width); height:auto; border-radius:16px; }
+  @media(max-width:900px) { .related-grid { gap:20px; } }
+  @media(max-width:700px) { .project-main { grid-template-columns:1fr; gap:35px; max-width:var(--project-image-width); } .project-facts dl { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; } .project-facts { padding-top:20px; } .related-heading { align-items:flex-start; flex-direction:column; } .related-grid { grid-template-columns:1fr; gap:35px; } .gallery { grid-template-columns:1fr; } .related-projects { padding-bottom:65px; } }
+</style>

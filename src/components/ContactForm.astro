@@ -1,0 +1,69 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+const formId = (import.meta.env.PUBLIC_FORMSPREE_ID || '').trim();
+const enabled = /^[a-zA-Z0-9]+$/.test(formId);
+const endpoint = enabled ? `https://formspree.io/f/${formId}` : undefined;
+---
+<div class="inquiry-form" id="inquiry">
+  <div class="form-heading"><h2>Tell us about <em>your project.</em></h2><p>Share the project type, location and engineering services you need.</p></div>
+  {!enabled && <div class="form-unavailable"><p>For project inquiries, please email or call our team.</p><a href={`mailto:${site.email}`}>{site.email}<Icon name="arrowUpRight" /></a><a href={site.phoneHref}>{site.phone}<Icon name="arrowUpRight" /></a></div>}
+  <form action={endpoint} method="POST" data-contact-form data-endpoint={endpoint}>
+    <fieldset disabled={!enabled}>
+      <legend class="sr-only">Project inquiry</legend>
+      <div class="field-grid">
+        <div class="field"><label for="inquiry-name">Full name <span aria-hidden="true">*</span></label><input id="inquiry-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="160" required /></div>
+        <div class="field"><label for="inquiry-email">Email address <span aria-hidden="true">*</span></label><input id="inquiry-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" maxlength="254" required /></div>
+        <div class="field"><label for="inquiry-company">Company <span class="optional">(optional)</span></label><input id="inquiry-company" name="company" type="text" autocomplete="organization" placeholder="Company or studio" maxlength="200" /></div>
+        <div class="field"><label for="inquiry-phone">Phone <span class="optional">(optional)</span></label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" maxlength="40" /></div>
+        <div class="field"><label for="inquiry-project-type">Project type <span class="optional">(optional)</span></label><select id="inquiry-project-type" name="project_type"><option value="">Select a project type</option><option>Custom home / residential</option><option>Restaurant / hospitality</option><option>Retail / commercial</option><option>Medical / dental</option><option>Automotive</option><option>Other</option></select></div>
+        <div class="field"><label for="inquiry-city">Project city <span class="optional">(optional)</span></label><input id="inquiry-city" name="city" type="text" placeholder="City, Florida" maxlength="160" /></div>
+        <div class="field field-wide"><label for="inquiry-message">About the project <span aria-hidden="true">*</span></label><textarea id="inquiry-message" name="message" placeholder="Tell us what you’re planning, the services you need, and your timeline." rows="4" maxlength="10000" required></textarea></div>
+      </div>
+      <div class="form-honeypot" aria-hidden="true"><label for="inquiry-gotcha">Leave this field empty</label><input id="inquiry-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off" /></div>
+      <input type="hidden" name="_subject" value="New project inquiry — Buchanan P.E. Consulting" />
+      <input type="hidden" name="requested_service" value="" data-requested-service />
+      <div class="form-bottom"><p><span aria-hidden="true">*</span> Required fields</p><button class="send-button" type="submit" data-submit-button disabled={!enabled}><span data-submit-label>Send inquiry</span><span class="send-arrow"><Icon name="arrowUpRight" /></span></button></div>
+    </fieldset>
+    <p class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+    {enabled && <noscript><p class="noscript-note">Submitting this form will open a confirmation page. You can also <a href={`mailto:${site.email}`}>email our team</a>.</p></noscript>}
+  </form>
+</div>
+
+<script>
+  import { initializeContactForm } from '../scripts/contact-form';
+  document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach(initializeContactForm);
+</script>
+
+<style>
+  .form-heading h2 { font-size: clamp(32px, 3.3vw, 42px); font-weight: 400; line-height: 1.12; letter-spacing: -.035em; margin: 0 0 16px; }
+  .form-heading > p { color: var(--muted, #646b61); font-size: 18px; line-height: 1.7; margin: 0; }
+  form { margin-top: 38px; }
+  fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+  fieldset:disabled .field-grid { opacity: .78; }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; row-gap: 27px; }
+  .field { display: flex; flex-direction: column; min-width: 0; }
+  .field-wide { grid-column: 1 / -1; }
+  label { font-size: 15px; margin-bottom: 8px; }
+  label .optional { color: var(--muted, #646b61); }
+  input, select, textarea { background: transparent; border: 0; border-bottom: 1px solid #bbc1b4; border-radius: 0; color: #191c18; width: 100%; min-height: 48px; font: inherit; font-size: 17px; padding: 10px 0 14px; transition: border-color .2s; }
+  input::placeholder, textarea::placeholder { color: #6d7367; opacity: 1; }
+  select { padding-right: 20px; cursor: pointer; }
+  textarea { resize: vertical; min-height: 115px; line-height: 1.6; }
+  input:focus, select:focus, textarea:focus { border-bottom-color: #191c18; outline: 2px solid #899c6f; outline-offset: 4px; }
+  .form-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 27px; }
+  .form-bottom > p { font-size: 14px; color: var(--muted, #646b61); }
+  .send-button { display: inline-flex; align-items: center; gap: 25px; font: inherit; font-size: 16px; color: #fff; background: #191c18; border: 1px solid #191c18; border-radius: 100px; padding: 5px 5px 5px 23px; cursor: pointer; }
+  .send-arrow { border: 1px solid #5c6058; border-radius: 50%; width: 37px; height: 37px; display: grid; place-items: center; font-size: 17px; }
+  .send-button:hover:not(:disabled) { background: #39422f; }
+  .send-button:disabled { opacity: .45; cursor: not-allowed; }
+  .form-unavailable { background: #e7ebdf; padding: 21px 24px; margin-top: 28px; border-radius: 3px; }
+  .form-unavailable p { font-size: 16px; line-height: 1.6; margin: 0 0 12px; }
+  .form-unavailable a { font-size: 16px; display: flex; align-items: center; justify-content: space-between; width: fit-content; gap: 18px; margin-top: 8px; text-underline-offset: 3px; }
+  .form-status:empty { display: none; }
+  .form-status { margin: 22px 0 0; padding: 16px 19px; font-size: 16px; line-height: 1.6; border: 1px solid #b7c5a7; background: #e7eddf; }
+  .form-status[data-state="error"] { background: #f8eeea; border-color: #cba79c; color: #763a29; }
+  .noscript-note { font-size: 16px; line-height: 1.6; margin-top: 20px; }
+  .form-honeypot { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 540px) { .field-grid { grid-template-columns: 1fr; gap: 23px; } .form-bottom { align-items: start; } .send-button { gap: 16px; } }
+</style>

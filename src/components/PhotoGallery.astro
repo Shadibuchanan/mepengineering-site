@@ -1,0 +1,157 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  image: ImageMetadata;
+  alt: string;
+  sourceFilename: string;
+}
+interface Props {
+  items: GalleryItem[];
+  filterable?: boolean;
+  layout?: 'grid' | 'strip';
+}
+const { items, filterable = true, layout = 'grid' } = Astro.props;
+const categories = [...new Set(items.map(item => item.category))];
+const prepared = await Promise.all(items.map(async item => {
+  const width = Math.min(item.image.width, 720);
+  const widths = [...new Set([240, 360, 480, 720, width].filter(size => size <= width))].sort((a, b) => a - b);
+  const full = await getImage({ src: item.image, width: Math.min(item.image.width, 2560), format: 'webp', quality: 92 });
+  return { ...item, width, widths, full, fullWidth: Number(full.attributes.width), fullHeight: Number(full.attributes.height) };
+}));
+const first = prepared[0];
+const titleId = `gallery-title-${crypto.randomUUID()}`;
+---
+
+<div class:list={['photo-gallery', { 'photo-gallery--preview': !filterable, 'photo-gallery--strip': layout === 'strip' }]} data-photo-gallery data-gallery-strip={layout === 'strip' ? '' : undefined}>
+  {layout === 'grid' && <div class="gallery-toolbar">
+    {filterable && <div class="gallery-filters" data-gallery-filters role="group" aria-label="Filter photos by category" hidden>
+      <button type="button" class="gallery-filter" data-gallery-filter="" aria-pressed="true">All photos</button>
+      {categories.map(category => <button type="button" class="gallery-filter" data-gallery-filter={category} aria-pressed="false">{category}</button>)}
+    </div>}
+    <p class="gallery-count" data-gallery-count role="status" aria-live="polite" aria-atomic="true">{items.length} {items.length === 1 ? 'photo' : 'photos'}</p>
+  </div>}
+  {layout === 'strip' && <div class="gallery-strip-controls" data-strip-controls role="group" aria-label="Photo gallery navigation">
+    <button type="button" class="gallery-strip-direction" data-strip-direction="left" aria-label="Browse photos left" aria-controls={`${titleId}-strip`} hidden><Icon name="arrowLeft" /></button>
+    <button type="button" class="gallery-strip-direction" data-strip-direction="right" aria-label="Browse photos right" aria-controls={`${titleId}-strip`} hidden><Icon name="arrowRight" /></button>
+  </div>}
+
+  <div class="gallery-scroll" data-gallery-scroll={layout === 'strip' ? '' : undefined} id={layout === 'strip' ? `${titleId}-strip` : undefined} tabindex={layout === 'strip' ? 0 : undefined} role={layout === 'strip' ? 'region' : undefined} aria-label={layout === 'strip' ? 'Project photo gallery' : undefined}>
+  <div class="gallery-grid" data-gallery-grid data-gallery-track>
+    {prepared.map(item => <figure class="gallery-card" style={{ '--gallery-item-width': `${item.width}px`, '--gallery-item-ratio': item.image.width / item.image.height }} data-gallery-card>
+      <a class="gallery-photo" href={item.full.src} aria-label={`View ${item.title} photo`} data-gallery-open data-gallery-id={item.id} data-gallery-title={item.title} data-gallery-category={item.category} data-gallery-alt={item.alt} data-gallery-width={item.fullWidth} data-gallery-height={item.fullHeight}>
+        <Image src={item.image} alt={item.alt} width={item.width} widths={item.widths} sizes={layout === 'strip' ? '(max-width: 599px) 250px, 300px' : '(max-width: 599px) 90vw, (max-width: 899px) 43vw, (max-width: 1199px) 28vw, 22vw'} format="webp" quality={88} loading="lazy" />
+        <span class="gallery-photo__open" aria-hidden="true"><Icon name="plus" /></span>
+      </a>
+      <figcaption><h3>{item.title}</h3><p>{item.category}</p></figcaption>
+    </figure>)}
+  </div>
+  </div>
+
+  {first && <dialog class="gallery-dialog" data-gallery-dialog aria-labelledby={titleId}>
+    <header class="gallery-dialog__header">
+      <div><h2 id={titleId} data-gallery-current-title>{first.title}</h2><p data-gallery-current-category>{first.category}</p></div>
+      <button class="gallery-dialog__close" type="button" data-gallery-close aria-label="Close photo viewer"><span>Close</span><Icon name="close" /></button>
+    </header>
+    <div class="gallery-dialog__stage" data-gallery-stage>
+      <img class="gallery-dialog__image" data-gallery-current-image src={first.full.src} alt={first.alt} width={first.fullWidth} height={first.fullHeight} loading="lazy" decoding="async" draggable="false" />
+      <p class="gallery-dialog__loading" data-gallery-loading hidden>Loading photo…</p>
+      <p class="gallery-dialog__error" data-gallery-error hidden>This photo could not be loaded. <a data-gallery-original href={first.full.src}>Open image</a></p>
+    </div>
+    <footer class="gallery-dialog__footer">
+      <button type="button" class="gallery-dialog__direction" data-gallery-previous aria-label="Previous photo"><Icon name="arrowLeft" /><span>Previous</span></button>
+      <p class="gallery-dialog__counter" data-gallery-counter role="status" aria-live="polite" aria-atomic="true">1 of {items.length}</p>
+      <button type="button" class="gallery-dialog__direction" data-gallery-next aria-label="Next photo"><span>Next</span><Icon name="arrowRight" /></button>
+    </footer>
+  </dialog>}
+</div>
+
+<script>
+  import { initializePhotoGallery } from '../scripts/photo-gallery';
+  import { initializeGalleryStrip } from '../scripts/gallery-strip';
+  document.querySelectorAll<HTMLElement>('[data-photo-gallery]').forEach(root => {
+    initializePhotoGallery(root);
+    if (root.hasAttribute('data-gallery-strip')) initializeGalleryStrip(root);
+  });
+</script>
+
+<style>
+  .photo-gallery { min-width: 0; }
+  .gallery-toolbar { margin-bottom: 30px; }
+  .gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .gallery-filter { background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; min-height: 44px; padding: 9px 18px; font-size: 15px; line-height: 1.4; transition: color .2s, background .2s, border-color .2s; }
+  .gallery-filter:hover { border-color: var(--ink); }
+  .gallery-filter[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+  .gallery-count { color: var(--muted); font-size: 15px; }
+  .gallery-grid { --gallery-columns: 4; display: grid; grid-template-columns: repeat(var(--gallery-columns), minmax(0, 1fr)); column-gap: 28px; row-gap: 0; }
+  .photo-gallery--preview .gallery-grid { --gallery-columns: 3; }
+  .gallery-card { display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; min-width: 0; width: 100%; margin: 0 0 34px; }
+  .gallery-photo { position: relative; display: block; align-self: center; justify-self: center; width: 100%; max-width: var(--gallery-item-width); border-radius: 12px; }
+  .gallery-photo img { display: block; width: 100%; height: auto; border-radius: 12px; }
+  .gallery-photo__open { position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #ffffff99; border-radius: 50%; background: #191c18d9; color: white; font-size: 20px; transition: background .2s; }
+  .gallery-photo:is(:hover, :focus-visible) .gallery-photo__open { background: #191c18; }
+  .gallery-card figcaption { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 0; min-width: 0; padding-top: 13px; }
+  .gallery-card h3 { font-size: 18px; line-height: 1.4; letter-spacing: -.015em; font-weight: 500; }
+  .gallery-card figcaption p { margin-top: 4px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .gallery-scroll { min-width: 0; }
+  .photo-gallery--strip { position: relative; --gallery-strip-stage: 220px; --gallery-strip-column: 300px; }
+  .gallery-strip-controls { position: absolute; z-index: 2; top: calc(var(--gallery-strip-stage) / 2 + 6px); inset-inline: clamp(12px, 2vw, 32px); transform: translateY(-50%); display: flex; justify-content: space-between; pointer-events: none; }
+  .gallery-strip-direction { display: inline-flex; align-items: center; justify-content: center; width: 48px; min-width: 48px; height: 48px; min-height: 48px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--paper); box-shadow: 0 2px 12px #191c1826; font-size: 20px; line-height: 1; pointer-events: auto; }
+  .gallery-strip-direction:hover { border-color: var(--ink); background: var(--accent); }
+  .photo-gallery--strip .gallery-scroll { overflow-x: auto; overflow-y: hidden; padding: 6px 0 16px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .photo-gallery--strip .gallery-scroll::-webkit-scrollbar { display: none; }
+  .photo-gallery--strip .gallery-grid { grid-template-columns: none; grid-template-rows: var(--gallery-strip-stage) auto auto; grid-auto-flow: column; grid-auto-columns: var(--gallery-strip-column); width: max-content; }
+  .photo-gallery--strip .gallery-card { margin: 0; }
+  .photo-gallery--strip .gallery-photo { max-width: min(var(--gallery-item-width), calc(var(--gallery-strip-stage) * var(--gallery-item-ratio))); transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+  .photo-gallery--strip .gallery-photo img { transition: filter .25s var(--ease-out); }
+  .photo-gallery--strip .gallery-photo:is(:hover, :focus-visible) { transform: translateY(-3px); box-shadow: 0 6px 14px #191c1826; }
+  .photo-gallery--strip .gallery-photo:is(:hover, :focus-visible) img { filter: brightness(1.08); }
+  .photo-gallery--strip .gallery-photo:is(:hover, :focus-visible) .gallery-photo__open { background: var(--paper); color: var(--ink); }
+  .photo-gallery--strip .gallery-card figcaption { width: 100%; text-align: center; }
+  .gallery-dialog { display: none; width: calc(100vw - 32px); height: calc(100dvh - 32px); max-width: 1600px; max-height: none; padding: 0; margin: auto; border: 1px solid #ffffff30; border-radius: 16px; background: #171b17; color: #f9faf7; overflow: hidden; }
+  .gallery-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+  .gallery-dialog::backdrop { background: #091109d9; }
+  .gallery-dialog__header { display: flex; align-items: start; justify-content: space-between; gap: 28px; padding: 22px 28px; border-bottom: 1px solid #ffffff25; }
+  .gallery-dialog__header h2 { font-size: clamp(20px, 2vw, 28px); line-height: 1.3; letter-spacing: -.025em; }
+  .gallery-dialog__header p { margin-top: 5px; color: #c5ccc1; font-size: 15px; }
+  .gallery-dialog button { color: inherit; background: transparent; border: 1px solid #ffffff70; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 10px 16px; font-size: 15px; line-height: 1.3; }
+  .gallery-dialog button:hover { background: #ffffff15; }
+  .gallery-dialog button:focus-visible, .gallery-dialog a:focus-visible { outline-color: #d5e1bc; }
+  .gallery-dialog__close { flex-shrink: 0; }
+  .gallery-dialog__stage { position: relative; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 24px; overflow: hidden; touch-action: pan-y pinch-zoom; }
+  .gallery-dialog__image { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 8px; object-fit: contain; user-select: none; }
+  .gallery-dialog__loading, .gallery-dialog__error { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 8px; font-size: 15px; line-height: 1.5; text-align: center; background: #171b17e6; color: #f9faf7; }
+  .gallery-dialog__error a { text-decoration: underline; text-underline-offset: 3px; }
+  .gallery-dialog__footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 28px; border-top: 1px solid #ffffff25; }
+  .gallery-dialog__counter { font-size: 16px; font-variant-numeric: tabular-nums; text-align: center; }
+  @media (max-width: 1199px) { .gallery-grid, .photo-gallery--preview .gallery-grid { --gallery-columns: 3; column-gap: 24px; } }
+  @media (max-width: 899px) { .gallery-grid, .photo-gallery--preview .gallery-grid { --gallery-columns: 2; } }
+  @media (max-width: 599px) {
+    .photo-gallery--strip { --gallery-strip-stage: 190px; --gallery-strip-column: 250px; }
+    .gallery-grid, .photo-gallery--preview .gallery-grid { --gallery-columns: 1; }
+    .gallery-card { margin-bottom: 30px; }
+    .gallery-filters { gap: 8px; flex-wrap: nowrap; overflow-x: auto; padding: 4px 3px 10px; margin-inline: -3px; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
+    .gallery-filter { flex: 0 0 auto; white-space: nowrap; padding-inline: 14px; font-size: 14px; }
+    .gallery-dialog { width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 12px; }
+    .gallery-dialog__header { padding: 18px 16px; gap: 16px; }
+    .gallery-dialog__header p { font-size: 14px; }
+    .gallery-dialog__close span:first-child { display: none; }
+    .gallery-dialog .gallery-dialog__close { width: 44px; padding: 0; }
+    .gallery-dialog__stage { padding: 16px; }
+    .gallery-dialog__footer { padding: 16px; gap: 12px; }
+    .gallery-dialog__direction span:not(.icon) { display: none; }
+    .gallery-dialog .gallery-dialog__direction { width: 46px; padding: 0; }
+  }
+  @media (max-height: 500px) {
+    .gallery-dialog__header { padding: 10px 18px; align-items: center; }
+    .gallery-dialog__header h2 { font-size: 20px; }
+    .gallery-dialog__header p { display: none; }
+    .gallery-dialog__stage { padding: 12px; }
+    .gallery-dialog__footer { padding: 8px 18px; }
+  }
+</style>

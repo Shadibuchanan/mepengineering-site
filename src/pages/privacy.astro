@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import PhotoFrame from '../components/PhotoFrame.astro';
+import mayami from '../assets/hero/mayami-tripadvisor.jpg';
+---
+<BaseLayout title="Privacy" description="How Buchanan P.E. Consulting handles website inquiries.">
+  <section class="page-intro container"><p class="eyebrow">Your information</p><h1 class="display-title">Privacy.</h1></section>
+  <div class="container privacy-layout">
+    <section class="privacy-copy"><h2>Information you choose to share</h2><p>When you contact Buchanan P.E. Consulting, Inc., we use the details you provide, such as your name, email address, phone number, and project information, to respond to your inquiry and discuss our services.</p><h2>Contact form processing</h2><p>When our online contact form is enabled, submissions are processed by Formspree and delivered to our team. Formspree may use security measures to identify spam and prevent abuse. You can read more in <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree’s privacy policy</a>.</p><h2>Website operation</h2><p>Our hosting provider may record technical information, such as IP addresses and request logs, to operate and secure the website. This website does not include advertising trackers or analytics scripts.</p><h2>Questions about your information</h2><p>For questions about information you have shared with us, or to request its correction or deletion, contact <a href={`mailto:${site.email}`}>{site.email}</a>.</p></section>
+    <PhotoFrame src={mayami} alt="Warmly lit dining room and bar at Mayami Wynwood" caption="Mayami Wynwood · Miami, Florida" variant="compact" loading="eager" />
+  </div>
+</BaseLayout>
+<style>
+  .privacy-layout { display:grid; grid-template-columns:1.2fr 1fr; align-items:start; gap:clamp(35px,7vw,110px); padding-bottom:100px; }
+  .privacy-copy h2 { margin-top:40px; font-size:clamp(28px,3vw,36px); line-height:1.2; }
+  .privacy-copy h2:first-child { margin-top:0; }
+  .privacy-copy p { margin-top:16px; color:var(--muted); font-size:18px; line-height:1.8; }
+  .privacy-copy a { text-decoration:underline; }
+  @media(max-width:800px) { .privacy-layout { grid-template-columns:1fr; } }
+</style>

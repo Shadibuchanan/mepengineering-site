@@ -1,0 +1,1336 @@
+{
+  "sourceDirectory": "C:\\Users\\Shadi\\www.mepengineers.com\\photogallery4",
+  "sourcePreservation": "All user files are read only and remain unchanged in the archive. Only genuine duplicate copies would be excluded from the published set; different views are retained.",
+  "sourceCount": 48,
+  "publishedCount": 48,
+  "excludedDuplicateCount": 0,
+  "missingNumberedFiles": [
+    27,
+    32
+  ],
+  "dimensionCounts": {
+    "467x350": 43,
+    "263x350": 3,
+    "524x350": 1,
+    "347x350": 1
+  },
+  "output": {
+    "format": "webp",
+    "quality": 88,
+    "enlargement": false,
+    "resizing": false,
+    "orientation": "EXIF orientation applied, if present",
+    "naturalAspectRatio": true
+  },
+  "duplicateAudit": {
+    "exact": "SHA-256 of original file bytes",
+    "decoded": "SHA-256 of EXIF-oriented, sRGB, three-channel decoded pixels with dimensions prefixed",
+    "perceptual": "64-bit horizontal difference hash from a 9x8 grayscale Lanczos3 resize; distance <= 8 flags a candidate for visual review, never automatic exclusion",
+    "perceptualCandidateThreshold": 8,
+    "perceptualCandidates": [],
+    "closestPairs": [
+      {
+        "files": [
+          "24_FROZEN YOGURT.jpg",
+          "34_RETAIL (2).jpg"
+        ],
+        "differenceHashDistance": 17
+      },
+      {
+        "files": [
+          "34_RETAIL (2).jpg",
+          "42_ICE RINK.jpg"
+        ],
+        "differenceHashDistance": 17
+      },
+      {
+        "files": [
+          "10_SCHOOLS.jpg",
+          "24_FROZEN YOGURT.jpg"
+        ],
+        "differenceHashDistance": 18
+      },
+      {
+        "files": [
+          "04_MEDICAL BLDG (2).jpg",
+          "42_ICE RINK.jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "06_CAFE (2).jpg",
+          "26_SPA.jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "10_SCHOOLS.jpg",
+          "34_RETAIL (2).jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "12_OFFICE BUILDING.jpg",
+          "46_RETAIL (5).jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "15_PETSMART.jpg",
+          "24_FROZEN YOGURT.jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "25_RESTAURANT (2).jpg",
+          "42_ICE RINK.jpg"
+        ],
+        "differenceHashDistance": 19
+      },
+      {
+        "files": [
+          "10_SCHOOLS.jpg",
+          "22_RETAIL (3).jpg"
+        ],
+        "differenceHashDistance": 20
+      }
+    ],
+    "visualReview": [
+      {
+        "files": [
+          "04_MEDICAL BLDG (2).jpg",
+          "44_MEDICAL BLDG.jpg"
+        ],
+        "reason": "Different viewpoints of a medical building: entrance sign/landscape versus street-facing facade.",
+        "decision": "retain-both",
+        "differenceHashDistance": 26
+      },
+      {
+        "files": [
+          "13_MIXED USE BUILDING.jpg",
+          "19_plaza las americas.jpg"
+        ],
+        "reason": "Different viewpoints and framing of the same building frontage, not duplicate photographs.",
+        "decision": "retain-both",
+        "differenceHashDistance": 25
+      },
+      {
+        "files": [
+          "11_SPORT FACILITIES.jpg",
+          "14_PRESCHOOL.jpg"
+        ],
+        "reason": "Different storefront subjects and viewpoints in a similar plaza setting.",
+        "decision": "retain-both",
+        "differenceHashDistance": 41
+      },
+      {
+        "files": [
+          "03_FIVE GUYS.jpg",
+          "40_FIVE GUYS (2).jpg"
+        ],
+        "reason": "Exterior storefront and interior ordering counter are distinct photographs.",
+        "decision": "retain-both",
+        "differenceHashDistance": 32
+      },
+      {
+        "files": [
+          "28_ZONA FRESCA (2).jpg",
+          "39_ZONA FRESCA.jpg"
+        ],
+        "reason": "Interior dining room and exterior storefront are distinct photographs.",
+        "decision": "retain-both",
+        "differenceHashDistance": 35
+      },
+      {
+        "files": [
+          "29_RESTAURANTS (3).jpg",
+          "45_RESTAURANTS (2).jpg"
+        ],
+        "reason": "Different restaurant views, furnishings, ceiling details, and framing.",
+        "decision": "retain-both",
+        "differenceHashDistance": 24
+      },
+      {
+        "files": [
+          "30_TOWN HOUSES.jpg",
+          "47_TOWNHOUSES.jpg"
+        ],
+        "reason": "Different townhouse viewpoints: front entrances versus garages/streetscape.",
+        "decision": "retain-both",
+        "differenceHashDistance": 35
+      },
+      {
+        "files": [
+          "06_CAFE (2).jpg",
+          "31_CAFE.jpg"
+        ],
+        "reason": "Café exterior and interior are distinct photographs; no shared location is inferred.",
+        "decision": "retain-both",
+        "differenceHashDistance": 37
+      },
+      {
+        "files": [
+          "10_SCHOOLS.jpg",
+          "24_FROZEN YOGURT.jpg"
+        ],
+        "reason": "Perceptually similar dark storefront bands, but different school and food-service subjects.",
+        "decision": "retain-both",
+        "differenceHashDistance": 18
+      },
+      {
+        "files": [
+          "03_FIVE GUYS.jpg",
+          "48_RETAIL.jpg"
+        ],
+        "reason": "Similar storefront composition, but different businesses and source photographs.",
+        "decision": "retain-both",
+        "differenceHashDistance": 21
+      },
+      {
+        "files": [
+          "13_MIXED USE BUILDING.jpg",
+          "34_RETAIL (2).jpg"
+        ],
+        "reason": "Different building heights, facades, and surroundings despite similar horizontal composition.",
+        "decision": "retain-both",
+        "differenceHashDistance": 26
+      },
+      {
+        "files": [
+          "24_FROZEN YOGURT.jpg",
+          "34_RETAIL (2).jpg"
+        ],
+        "reason": "Interior-facing food-service storefront versus exterior retail strip; different scenes.",
+        "decision": "retain-both",
+        "differenceHashDistance": 17
+      }
+    ],
+    "reviewScope": "All 48 images inspected on three labeled contact sheets; repeated subjects and closest-composition pairs compared. No exact, decoded, or visually duplicated photograph was found."
+  },
+  "editorialNotes": [
+    "The numbered collection has 48 JPEGs, not 50. Numbers 27 and 32 are absent; the jbcore subdirectory contains gallery software rather than photographs.",
+    "Repeated business names do not establish duplicate photographs or a shared location. Distinct interiors, exteriors, and viewpoints remain published.",
+    "Architecture is used for the high-rise image because the source does not establish whether it is residential, commercial, or hospitality.",
+    "Historical brand names shown in the supplied files are retained. No current operating status, address, date, or engineering scope is inferred.",
+    "Every source is 350 pixels high. Thumbnail and lightbox layouts should respect the source dimensions rather than stretch these images into full-width banners."
+  ],
+  "galleryPreviewIds": [
+    "aircraft-hangar",
+    "zona-fresca-dining-room",
+    "townhouse-community",
+    "cooling-towers",
+    "medical-office-entrance",
+    "indoor-ice-rink"
+  ],
+  "items": [
+    {
+      "sourceFilename": "01_AIRPLANE HANGARS.jpg",
+      "id": "aircraft-hangar",
+      "title": "Aircraft hangar",
+      "category": "Commercial",
+      "alt": "Aircraft parked inside a hangar with exposed steel roof framing and overhead lights",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 88251,
+      "sha256": "1c6813ab6256c7d3dc21b233d73506a4cb37b6c67344d0f60e2c9bc795c46906",
+      "decodedSha256": "eef76538840053ee4e6ff580937afbfdb73b75fada8b1c91ebcc9de3fcb26d5c",
+      "differenceHash": "674cdb940e1400c1",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/aircraft-hangar.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 32812,
+      "matchedOriginals": [
+        "01_AIRPLANE HANGARS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "02_CAR DEALERSHIP.jpg",
+      "id": "mazda-dealership",
+      "title": "Mazda dealership",
+      "category": "Commercial",
+      "alt": "Mazda dealership showroom entrance with vehicles parked outside",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 84084,
+      "sha256": "c2f4472cc267b602648c0537ace860c03464e6da21f4f3081dfe079b5fb74fab",
+      "decodedSha256": "b632f729eaeb2c5177a86a6a353b12662f149f6e61cb54f2709df4a4306e5d41",
+      "differenceHash": "8d448e86e4c83c83",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/mazda-dealership.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 29196,
+      "matchedOriginals": [
+        "02_CAR DEALERSHIP.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "03_FIVE GUYS.jpg",
+      "id": "five-guys-storefront",
+      "title": "Five Guys storefront",
+      "category": "Hospitality",
+      "alt": "Five Guys sign above a shaded restaurant entrance",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 66745,
+      "sha256": "81ec1437470a1ec493e829410e5fe67d8413fdcd37045e5b735bcc04bf412d3c",
+      "decodedSha256": "badb967d6302b69f1e05f26cf0f5ba28e6fb90dcf79ad6aaa4a859e830f91d4c",
+      "differenceHash": "53d32f038bbb9b0d",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/five-guys-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 18976,
+      "matchedOriginals": [
+        "03_FIVE GUYS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "04_MEDICAL BLDG (2).jpg",
+      "id": "medical-office-entrance",
+      "title": "Medical office entrance",
+      "category": "Healthcare",
+      "alt": "Medical office building behind a landscaped lawn and entrance sign",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 93827,
+      "sha256": "039b7cb180885d108744b4c971a656db8cd575e57109f055cec413f4da8e4a30",
+      "decodedSha256": "48987c938c8d41e65cd2e1b988a6fcd13b74f2982bf94f2c3c2be1079d37dd99",
+      "differenceHash": "511437228237371f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/medical-office-entrance.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 38142,
+      "matchedOriginals": [
+        "04_MEDICAL BLDG (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "05_DUNKIN DONUT.jpg",
+      "id": "dunkin-donuts-storefront",
+      "title": "Dunkin’ Donuts storefront",
+      "category": "Hospitality",
+      "alt": "Dunkin’ Donuts building with orange awnings and an adjoining parking area",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 71845,
+      "sha256": "f04e0c3e945695f4bdc14057d3bf60f8f953bef56a8d8a2c19dda0747af183e9",
+      "decodedSha256": "4bf9dcfb0eae914f57591b7bab1101f8025efedab70cc8070177627847aa7d50",
+      "differenceHash": "69ecdcdc5cd9e37d",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/dunkin-donuts-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 25374,
+      "matchedOriginals": [
+        "05_DUNKIN DONUT.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "06_CAFE (2).jpg",
+      "id": "cafe-storefront",
+      "title": "Café storefront",
+      "category": "Hospitality",
+      "alt": "Café storefront with tall windows, palms, and a white terrace railing",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 79836,
+      "sha256": "5a9be09d9ba1da6bc48babb034d66382287f03fb235000da63da70b3a3445d3a",
+      "decodedSha256": "01ea2fae1c5d2d3ab94da41098dfe0d8ad2617d176fda4fe89ddf5b7e493c63c",
+      "differenceHash": "39f9d1b055533303",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/cafe-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 29518,
+      "matchedOriginals": [
+        "06_CAFE (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "07_RESTAURANTS.jpg",
+      "id": "popeyes-storefront",
+      "title": "Popeyes storefront",
+      "category": "Hospitality",
+      "alt": "Popeyes restaurant entrance with a red awning and yellow facade",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 107923,
+      "sha256": "24588b4283a5130d8e564894d02620f8c79e704a7cce51fdaf1f669222efbe40",
+      "decodedSha256": "ff0ade6d0fddf60cb1bd319dc0f075449521eda26e2082aee32df7dd0775f539",
+      "differenceHash": "696378682969f0cc",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/popeyes-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 41860,
+      "matchedOriginals": [
+        "07_RESTAURANTS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "08_RESTAURANT2.jpg",
+      "id": "restaurant-patio",
+      "title": "Restaurant patio",
+      "category": "Hospitality",
+      "alt": "Restaurant storefront with a raised outdoor patio and stone retaining wall",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 77456,
+      "sha256": "390ba766f401f740730d3a9392bcb56cdfe2f81f321945447fd6f527a0a1285c",
+      "decodedSha256": "e6460e22e9b87ee967e1d80594e2575818a557149d7d50a2b9f6a470c2e4f9ab",
+      "differenceHash": "88c7c7c6ccc8f07c",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/restaurant-patio.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 28592,
+      "matchedOriginals": [
+        "08_RESTAURANT2.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "09_RETAIL (4).jpg",
+      "id": "swimwear-retail-interior",
+      "title": "Swimwear retail interior",
+      "category": "Commercial",
+      "alt": "Swimwear store entrance with merchandise displays and ceiling lighting",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 113876,
+      "sha256": "1b96b155f39c423ec2219d655d05ea57132605cd975666fd4efcc040ba6799b7",
+      "decodedSha256": "8f026be2069b1f8bc11c68e41015cffbd20ee070c7ce62536d4d13746433f159",
+      "differenceHash": "33b6d8c248685070",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/swimwear-retail-interior.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 43146,
+      "matchedOriginals": [
+        "09_RETAIL (4).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "10_SCHOOLS.jpg",
+      "id": "middle-school-entrance",
+      "title": "Middle school entrance",
+      "category": "Education",
+      "alt": "Ramblewood Middle School entrance beneath a green canopy",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 67820,
+      "sha256": "20ab4af4830bb98d79d5a3cf5f39e252b968c908199d17525f836bf1d5365979",
+      "decodedSha256": "405030a7cdbacd5c77fede5f2fcce7baab3617ebd7ebe2c1a857cd1ff4dd797c",
+      "differenceHash": "6b07070e3e384f07",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/middle-school-entrance.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 21240,
+      "matchedOriginals": [
+        "10_SCHOOLS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "11_SPORT FACILITIES.jpg",
+      "id": "martial-arts-studio",
+      "title": "Martial arts studio",
+      "category": "Recreation",
+      "alt": "Taekwondo studio storefront with tall windows and landscaped planting beds",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 92023,
+      "sha256": "c88e3accd8e9cbd09410305942b54f2d38cb996c36034ad7d0b7bf3a71cc5c81",
+      "decodedSha256": "c93848c018e2b7b2b85ffa292f9d699cbfa43029c29be34041cc39a400240747",
+      "differenceHash": "3130501d7c195800",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/martial-arts-studio.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 38108,
+      "matchedOriginals": [
+        "11_SPORT FACILITIES.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "12_OFFICE BUILDING.jpg",
+      "id": "office-building-exterior",
+      "title": "Office building exterior",
+      "category": "Commercial",
+      "alt": "Multi-story office building with reflective windows and landscaping",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 98667,
+      "sha256": "2e1968721b0ce913760762785411e0e15b4bfd667bf0139041234489e2f6d9b3",
+      "decodedSha256": "ff0b64f8444b5d3ecb8355212a1386f11c428e5ec3c3c3cc5ecccb61e6f93279",
+      "differenceHash": "f0e0b864c2e7e226",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/office-building-exterior.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 38430,
+      "matchedOriginals": [
+        "12_OFFICE BUILDING.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "13_MIXED USE BUILDING.jpg",
+      "id": "mixed-use-building",
+      "title": "Mixed-use building",
+      "category": "Commercial",
+      "alt": "Three-story mixed-use building with long balconies and parking in front",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 86095,
+      "sha256": "623f6c483ff918199fa82e349ae74082e710ce9e3d4a0aacfdf03a68d4855778",
+      "decodedSha256": "15c1722e55affc9606f4b4b1922e1fe5b8704c3b7207ef731dcf7e3e1d69950a",
+      "differenceHash": "cf2c65754bd7370f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/mixed-use-building.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 30466,
+      "matchedOriginals": [
+        "13_MIXED USE BUILDING.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "14_PRESCHOOL.jpg",
+      "id": "preschool-storefront",
+      "title": "Preschool storefront",
+      "category": "Education",
+      "alt": "Preschool storefront in a commercial plaza with awnings and palm trees",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 85212,
+      "sha256": "f52bdef3a16ca910f9e7e85847b87a453dd8549d366e43d7244fa1bbbefe2966",
+      "decodedSha256": "49159e860516fe37c061c62997efa83ea2203f3e90de0055e7b09cc7969d5b0d",
+      "differenceHash": "073ff3c327e7f63f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/preschool-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 35100,
+      "matchedOriginals": [
+        "14_PRESCHOOL.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "15_PETSMART.jpg",
+      "id": "petsmart-storefront",
+      "title": "PetSmart storefront",
+      "category": "Commercial",
+      "alt": "PetSmart storefront with a blue corner tower and covered entrances",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 74216,
+      "sha256": "f18294e2807a7ffba6856b171baa63db4a054a5a5ff657a1d300e706f8c8d1bf",
+      "decodedSha256": "8ab9c2cbbd11e7e79a4be9d7672739804088caed3e95e5670b690fb643f2ab7e",
+      "differenceHash": "3f1cac5eeae2074f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/petsmart-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 26514,
+      "matchedOriginals": [
+        "15_PETSMART.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "16_JAPANGO PHOTO.jpg",
+      "id": "japango-entrance",
+      "title": "Japango entrance",
+      "category": "Hospitality",
+      "alt": "Japango restaurant entrance framed by a stone facade and trees",
+      "originalWidth": 263,
+      "originalHeight": 350,
+      "originalBytes": 65778,
+      "sha256": "92a896cbeeeae971daa0b1f54293c51e8856c0ba8bd2f1aeaffb069d2b6df663",
+      "decodedSha256": "231c20c8b29172d6bbac76bced4e8dd562575558be0162d1e0c384700e83e51d",
+      "differenceHash": "02edc5360e4d75f3",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/japango-entrance.webp",
+      "outputWidth": 263,
+      "outputHeight": 350,
+      "outputBytes": 25504,
+      "matchedOriginals": [
+        "16_JAPANGO PHOTO.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "17_AQUARIUM PLUMBING.jpg",
+      "id": "aquarium-plumbing",
+      "title": "Aquarium plumbing",
+      "category": "Building systems",
+      "alt": "Aquarium equipment room with pipes, valves, blue tanks, and service equipment",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 97371,
+      "sha256": "cb838a49fc0546f05e896fdd515944b295ad55703163652ca137757a6fe72644",
+      "decodedSha256": "908b0d988c876471dc206d62115001fc1f471f947b30d2a8643255e0c9660f99",
+      "differenceHash": "b9d399ddfcace692",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/aquarium-plumbing.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 30818,
+      "matchedOriginals": [
+        "17_AQUARIUM PLUMBING.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "18_COOLING TOWERS.jpg",
+      "id": "cooling-towers",
+      "title": "Cooling towers",
+      "category": "Building systems",
+      "alt": "Cooling tower equipment with connected piping and metal service panels",
+      "originalWidth": 263,
+      "originalHeight": 350,
+      "originalBytes": 56567,
+      "sha256": "2d1114eb418906d9753b1176b0338266dcb1d62dffb077421df8b8f2a9551a76",
+      "decodedSha256": "f382de31be7e72410205d8755713521a214cf9637478d654cf4159311360cb44",
+      "differenceHash": "909a1a52585a1a9a",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/cooling-towers.webp",
+      "outputWidth": 263,
+      "outputHeight": 350,
+      "outputBytes": 16388,
+      "matchedOriginals": [
+        "18_COOLING TOWERS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "19_plaza las americas.jpg",
+      "id": "plaza-las-americas",
+      "title": "Plaza Las Americas",
+      "category": "Commercial",
+      "alt": "Plaza Las Americas building with balconies and a parking area in front",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 96949,
+      "sha256": "ff4790510236a488e1ddb9fc32fa1292f933503eaf010ede9ef3ee92fd7c11de",
+      "decodedSha256": "490f3cb9f22e0ebf98375773e03bc6971e02ecc62df0028615bb77d86a6a582f",
+      "differenceHash": "3fb657434f64356d",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/plaza-las-americas.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 36724,
+      "matchedOriginals": [
+        "19_plaza las americas.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "20_NIGHT CLUB.jpg",
+      "id": "nightclub-signage",
+      "title": "Nightclub signage",
+      "category": "Hospitality",
+      "alt": "Decorative sign for The Swamp at Seminole Paradise",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 95657,
+      "sha256": "59e0b46ce83561152ff9ba735ca58a9e26b5448c3395b570f885e72a3f367adc",
+      "decodedSha256": "1be8bacd3fa01ad4520ccacf84c7fd3bc172dd2e28aab4ac5f6bf9306f4a02ba",
+      "differenceHash": "06d6f8dcf8f0c6ca",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/nightclub-signage.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 33462,
+      "matchedOriginals": [
+        "20_NIGHT CLUB.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "21_DENTAL OFFICE.jpg",
+      "id": "dental-office-storefront",
+      "title": "Dental office storefront",
+      "category": "Healthcare",
+      "alt": "Dental office signage on the upper level of a two-story commercial building",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 92684,
+      "sha256": "dceceda4bfbad5c553bbe4b655c48368608733a1271350160b131fd84a264860",
+      "decodedSha256": "ea1d59df044d882d2530b00752aced06c2aff602cedcb213491f4dd3112e6c47",
+      "differenceHash": "366ccc4a4c0beac8",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/dental-office-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 31096,
+      "matchedOriginals": [
+        "21_DENTAL OFFICE.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "22_RETAIL (3).jpg",
+      "id": "retail-store-aisles",
+      "title": "Retail store aisles",
+      "category": "Commercial",
+      "alt": "Retail merchandise aisles beneath rows of overhead lighting",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 120571,
+      "sha256": "1a48c4e0f73eeb4bea64dee326abd854ea2dd76eedaa0d453987317e9cb97b33",
+      "decodedSha256": "fbe62db81c7d4627d1dfbed7d3e12179413be511a6dd6bce3bd7696bf2325bc8",
+      "differenceHash": "0b0e154c34b88808",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/retail-store-aisles.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 44762,
+      "matchedOriginals": [
+        "22_RETAIL (3).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "23_bbking -CITY PLACE.jpg",
+      "id": "bb-kings-exterior",
+      "title": "B.B. King’s exterior",
+      "category": "Hospitality",
+      "alt": "B.B. King’s Blues Club entrance with palm trees and an outdoor seating area",
+      "originalWidth": 524,
+      "originalHeight": 350,
+      "originalBytes": 137135,
+      "sha256": "fb2cebbb5249f5f85111b94401078026bc885f006c26e88088d68074047c6397",
+      "decodedSha256": "f922313d0579da41d65ac856981037399f9204fed9c3857de0582f7f059e4690",
+      "differenceHash": "3e0fc9a92cd0cc8a",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/bb-kings-exterior.webp",
+      "outputWidth": 524,
+      "outputHeight": 350,
+      "outputBytes": 59274,
+      "matchedOriginals": [
+        "23_bbking -CITY PLACE.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "24_FROZEN YOGURT.jpg",
+      "id": "frozen-yogurt-shop",
+      "title": "Frozen yogurt shop",
+      "category": "Hospitality",
+      "alt": "Frozen yogurt shop entrance opening onto a food-service seating area",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 93359,
+      "sha256": "c2ba419293edbecf71f47fe71b54522e459b9ce83d2c3d1ceb15f8f41513f6b2",
+      "decodedSha256": "3dc85fba107f80f9d004e367bb630236a4762e281eb6a4d9df3b7cc5457b70f1",
+      "differenceHash": "27060d1e2a232d2f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/frozen-yogurt-shop.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 31166,
+      "matchedOriginals": [
+        "24_FROZEN YOGURT.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "25_RESTAURANT (2).jpg",
+      "id": "restaurant-entrance",
+      "title": "Restaurant entrance",
+      "category": "Hospitality",
+      "alt": "Restaurant entrance with columns, decorative facade details, and outdoor tables",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 90818,
+      "sha256": "ddd2edbf43b67ac69f1d13a6633827e9110f83cebdec792481a2e0392650517d",
+      "decodedSha256": "cb806326a3b47c7e0a98115684f39e561a478a40ef6258b71fad950d1eafb0bc",
+      "differenceHash": "3b6170b6b28c0f3f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/restaurant-entrance.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 35394,
+      "matchedOriginals": [
+        "25_RESTAURANT (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "26_SPA.jpg",
+      "id": "salon-and-spa",
+      "title": "Salon and spa",
+      "category": "Commercial",
+      "alt": "Salon and spa storefront with a central entrance and planted beds",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 83190,
+      "sha256": "ab920e8168d5938aa06af5e4ae1dc6275f5288ee45dfcd027b4d829166718cd9",
+      "decodedSha256": "bc43f04d4f765c61ebb7dabf69f3ab90a72eef492e9b58733b847fc59825c7d8",
+      "differenceHash": "2b319b7164633316",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/salon-and-spa.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 29204,
+      "matchedOriginals": [
+        "26_SPA.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "28_ZONA FRESCA (2).jpg",
+      "id": "zona-fresca-dining-room",
+      "title": "Zona Fresca dining room",
+      "category": "Hospitality",
+      "alt": "Zona Fresca dining room with exposed ducts, pendant lighting, and red seating",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 102175,
+      "sha256": "7a86fb00e4068a3702809135d1acfeec6ca0a39287892e030b750e4e22a1d81b",
+      "decodedSha256": "bf82db5bfb6ddb2daa956ac5110fe0b7cd403751385ca364041dd54d5ed0cdf2",
+      "differenceHash": "5c6468c06ce6920e",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/zona-fresca-dining-room.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 37482,
+      "matchedOriginals": [
+        "28_ZONA FRESCA (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "29_RESTAURANTS (3).jpg",
+      "id": "restaurant-dining-room",
+      "title": "Restaurant dining room",
+      "category": "Hospitality",
+      "alt": "Restaurant dining room with tables, chairs, exposed white ducts, and a bar",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 94091,
+      "sha256": "d68c40969bfab62adaf0dc978179e78ae6c6ee3708d02d5b224bdd4772ea0bc9",
+      "decodedSha256": "457decdd7c03cf0e8c6a4822de89eb9ffc2f047eda2d49de28084cdf2d5bfd86",
+      "differenceHash": "9c32c4064294b636",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/restaurant-dining-room.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 34764,
+      "matchedOriginals": [
+        "29_RESTAURANTS (3).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "30_TOWN HOUSES.jpg",
+      "id": "townhouse-community",
+      "title": "Townhouse community",
+      "category": "Residential",
+      "alt": "Row of two-story townhouses with tile roofs and landscaped front entrances",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 86170,
+      "sha256": "412a0a32d02f20bd2e0174f298fdbffc752bf4247535a23dd018ec50f3c003ae",
+      "decodedSha256": "497bca36ec35fe8aceb51c0a3b408c4dc71c078e35911d00d53818965baec9ec",
+      "differenceHash": "820260726a69737f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/townhouse-community.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 32042,
+      "matchedOriginals": [
+        "30_TOWN HOUSES.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "31_CAFE.jpg",
+      "id": "cafe-interior",
+      "title": "Café interior",
+      "category": "Hospitality",
+      "alt": "Café tables and chairs in front of an open service counter",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 105463,
+      "sha256": "416968a4ffee0f19edd82246b6a8af9cc23bfd6ea18faf37667e4608ba6ccc35",
+      "decodedSha256": "c0f75f4d2c3b76623c99740154bacee6471d7abf75fa779415a09ecee81fccff",
+      "differenceHash": "ecad1b4b3f968e36",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/cafe-interior.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 40378,
+      "matchedOriginals": [
+        "31_CAFE.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "33_RESTAURANTS (4).jpg",
+      "id": "restaurant-booth-seating",
+      "title": "Restaurant booth seating",
+      "category": "Hospitality",
+      "alt": "Restaurant dining area with red booth seating and decorative ceiling lights",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 104290,
+      "sha256": "7bf1955eb460ef11ffd04a63551e5237bcd4747834e33c5292cf1d55c29e76ae",
+      "decodedSha256": "0995d3bcec09d54fe0a60688a84bf90e0706c1f67fd9ba47ff76b1563d48b019",
+      "differenceHash": "6508a092165de6cc",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/restaurant-booth-seating.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 33182,
+      "matchedOriginals": [
+        "33_RESTAURANTS (4).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "34_RETAIL (2).jpg",
+      "id": "dollar-general-storefront",
+      "title": "Dollar General storefront",
+      "category": "Commercial",
+      "alt": "Dollar General storefront across a paved parking area",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 65155,
+      "sha256": "1f0ea679fc10d999a88fb25249fbccf02281dc2c3cbed0158c0698766f80b7a0",
+      "decodedSha256": "55f599ca69590a64a9bb85d6e4cdd7eef9514639ec88c66c2c6b3a7bc0343dee",
+      "differenceHash": "070007963e171e27",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/dollar-general-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 21874,
+      "matchedOriginals": [
+        "34_RETAIL (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "35_SPORT AUTHORITY.jpg",
+      "id": "sports-authority-storefront",
+      "title": "Sports Authority storefront",
+      "category": "Commercial",
+      "alt": "Sports Authority entrance with a red sign tower and landscaped walkway",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 83851,
+      "sha256": "8e16c387cd9baf671643f781737173884115885d3af03369df03e141a906ef48",
+      "decodedSha256": "ac0a6fd701067a8924afbb5bb7cf958bc52f333898a39921410d5857963a3c86",
+      "differenceHash": "993979692222fafb",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/sports-authority-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 30188,
+      "matchedOriginals": [
+        "35_SPORT AUTHORITY.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "36_ASSEMBLY.jpg",
+      "id": "fountain-courtyard",
+      "title": "Fountain courtyard",
+      "category": "Commercial",
+      "alt": "Outdoor fountain and landscaped courtyard in front of commercial storefronts",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 114113,
+      "sha256": "71f06a03efc8c413fdc7faf5ba265877b8e455b4bedbd0361d97731eeb99bcf7",
+      "decodedSha256": "f58afe568bf47f3b20803b181ef491aa52c436af9b2c3c6b13b53e8a9ea30ddb",
+      "differenceHash": "b094eae62463033c",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/fountain-courtyard.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 53432,
+      "matchedOriginals": [
+        "36_ASSEMBLY.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "37_OFFICE BLDG.jpg",
+      "id": "office-building-and-grounds",
+      "title": "Office building and grounds",
+      "category": "Commercial",
+      "alt": "Office building with reflective windows, mature trees, and parking spaces",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 121068,
+      "sha256": "26bdc1d11343a8d2e6f957c7ee159e2344b856011197a829b69edfaf4801e714",
+      "decodedSha256": "4095162ec7c3a79737826e2da2bd3b5a39250e7f470fac9fc3a4d9d434bf126e",
+      "differenceHash": "1eb2fbdddf31b965",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/office-building-and-grounds.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 54848,
+      "matchedOriginals": [
+        "37_OFFICE BLDG.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "38_AQUARIUM.jpg",
+      "id": "aquarium-display",
+      "title": "Aquarium display",
+      "category": "Recreation",
+      "alt": "Large aquarium display with fish and a central coral-like rock formation",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 114681,
+      "sha256": "9a7770731269fe0622a5d64e92551039dad4bb3a383ebaefdc3a95435fd49466",
+      "decodedSha256": "558ca906aa038ce60099ce2bbfae95d9516b02e8ca2a8465037fdd5859c094f2",
+      "differenceHash": "323233367267d463",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/aquarium-display.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 44150,
+      "matchedOriginals": [
+        "38_AQUARIUM.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "39_ZONA FRESCA.jpg",
+      "id": "zona-fresca-storefront",
+      "title": "Zona Fresca storefront",
+      "category": "Hospitality",
+      "alt": "Zona Fresca storefront with orange umbrellas over outdoor tables",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 104866,
+      "sha256": "865a04492c0649b9ecf7bccf85e50039f3ac156a4575c120c7f09e5444d1593c",
+      "decodedSha256": "a87a78c69f2fffc4347d4c8967e2de3e2963e5dc724ed8705e2962296eff7015",
+      "differenceHash": "f34acb93ed697576",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/zona-fresca-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 40752,
+      "matchedOriginals": [
+        "39_ZONA FRESCA.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "40_FIVE GUYS (2).jpg",
+      "id": "five-guys-service-counter",
+      "title": "Five Guys service counter",
+      "category": "Hospitality",
+      "alt": "Five Guys ordering counter with red-and-white tile and overhead menus",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 99669,
+      "sha256": "58958dbdcf560d799d23eb3e3a101c3f6cd99aaec29b305bcedae669e18fe325",
+      "decodedSha256": "eaa36162817cc15d1d14d7f23c2b9a641e5f6aac38d44a33c0da3743bbbfbe2d",
+      "differenceHash": "1d9dbeced61c9c9c",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/five-guys-service-counter.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 33598,
+      "matchedOriginals": [
+        "40_FIVE GUYS (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "41_HOODS.jpg",
+      "id": "commercial-kitchen-hood",
+      "title": "Commercial kitchen hood",
+      "category": "Building systems",
+      "alt": "Commercial kitchen service opening and stainless-steel exhaust hood",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 96370,
+      "sha256": "a99744f89491efd71fb9c06dc92b08fd62325f94bdb8e8610f76522055ab9b0a",
+      "decodedSha256": "d942d76c57266f9247eb1e80afbc766f319870b0c9d7691de93e98a087b0b912",
+      "differenceHash": "0366352577334c3e",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/commercial-kitchen-hood.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 32728,
+      "matchedOriginals": [
+        "41_HOODS.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "42_ICE RINK.jpg",
+      "id": "indoor-ice-rink",
+      "title": "Indoor ice rink",
+      "category": "Recreation",
+      "alt": "Indoor ice rink beneath a steel roof with suspended lighting",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 92138,
+      "sha256": "bb5a32aa3d8e7a289892777ab2964da09e9c23aaab1e1f779e961fba06c7ffec",
+      "decodedSha256": "47c6070018c5e380c41f9bc243037f6d47f8584219975df7190ee39e8bb881b2",
+      "differenceHash": "9371379693071637",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/indoor-ice-rink.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 38140,
+      "matchedOriginals": [
+        "42_ICE RINK.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "43_INSTITUTION.jpg",
+      "id": "florida-career-college-entrance",
+      "title": "Florida Career College entrance",
+      "category": "Education",
+      "alt": "Florida Career College storefront entrance with an awning and window graphics",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 72579,
+      "sha256": "0e9ce7992ee9591b7be9211afe39ff9b112dbbde6ef72f4034c8fcab05bd4ad5",
+      "decodedSha256": "feccb30d762fd90a7b16ce638cba51b3c234f40d35eb7edb203c8dc33174b191",
+      "differenceHash": "e2d4030dd932310d",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/florida-career-college-entrance.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 23382,
+      "matchedOriginals": [
+        "43_INSTITUTION.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "44_MEDICAL BLDG.jpg",
+      "id": "medical-building-exterior",
+      "title": "Medical building exterior",
+      "category": "Healthcare",
+      "alt": "Medical building exterior with tall entrance columns viewed from the street",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 69370,
+      "sha256": "1fe5b55204e426c343b09d0b0a2d692087bb9152144e8589bc55c4d3d51014ff",
+      "decodedSha256": "8e74be6c9fc9fbbf9fff5bd09efe2c085ef12fe8097a9f28117ebde797ca2a4d",
+      "differenceHash": "474e81a0e6c2051f",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/medical-building-exterior.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 22336,
+      "matchedOriginals": [
+        "44_MEDICAL BLDG.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "45_RESTAURANTS (2).jpg",
+      "id": "restaurant-table-seating",
+      "title": "Restaurant table seating",
+      "category": "Hospitality",
+      "alt": "Restaurant dining room with white tablecloths, a long bar, and perimeter windows",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 92770,
+      "sha256": "851edd5dbe2e21b9c7f4ba0bbe2003652e9e6b732feb962dfeb49e252a9e1e09",
+      "decodedSha256": "ac4738f12e7369a156dcae7ccf67bcadf87eb9bf56084bc4be94919cc6298652",
+      "differenceHash": "080b07042a991c72",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/restaurant-table-seating.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 31100,
+      "matchedOriginals": [
+        "45_RESTAURANTS (2).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "46_RETAIL (5).jpg",
+      "id": "retail-plaza-storefronts",
+      "title": "Retail plaza storefronts",
+      "category": "Commercial",
+      "alt": "Retail plaza corner tower with restaurant and frozen yogurt storefronts",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 86652,
+      "sha256": "5be46a9b455470bcac9dff7ce4e3ff4fed2e48d03d8e39f8ce660f9dd0763f7c",
+      "decodedSha256": "129ac1a2457a75081ceade0b7b0b84adc0e5b7c2dd892c16d4d876728ec7ad16",
+      "differenceHash": "60626566ca6b2a2e",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/retail-plaza-storefronts.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 33160,
+      "matchedOriginals": [
+        "46_RETAIL (5).jpg"
+      ]
+    },
+    {
+      "sourceFilename": "47_TOWNHOUSES.jpg",
+      "id": "townhouse-streetscape",
+      "title": "Townhouse streetscape",
+      "category": "Residential",
+      "alt": "Townhouse streetscape with garage doors, parked vehicles, and palm trees",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 82015,
+      "sha256": "b6c830620e4f46621445c796658cc497a12ec048848fc4815f93922f774bcd1f",
+      "decodedSha256": "18a3c8895d6709948f4488c41fabd5e41c9ceb927c65027936fb504128763f3e",
+      "differenceHash": "0f1f35831b120132",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/townhouse-streetscape.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 29240,
+      "matchedOriginals": [
+        "47_TOWNHOUSES.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "48_RETAIL.jpg",
+      "id": "citi-trends-storefront",
+      "title": "Citi Trends storefront",
+      "category": "Commercial",
+      "alt": "Citi Trends storefront with vehicles parked outside the entrance",
+      "originalWidth": 467,
+      "originalHeight": 350,
+      "originalBytes": 68206,
+      "sha256": "03d35df835961a8dad74c779c196e2e5200b5480e1215ca3ac64b5db43a41199",
+      "decodedSha256": "f9d7d6b164d5634326eb63036ef6eb92efe1b5722b4073131b128dc62b798854",
+      "differenceHash": "c0616906dbdbcb6d",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/citi-trends-storefront.webp",
+      "outputWidth": 467,
+      "outputHeight": 350,
+      "outputBytes": 20030,
+      "matchedOriginals": [
+        "48_RETAIL.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "49_COOLING TOWER REPLACEMENT.jpg",
+      "id": "cooling-tower-replacement",
+      "title": "Cooling tower replacement",
+      "category": "Building systems",
+      "alt": "Crane positioned beside a multi-story building",
+      "originalWidth": 263,
+      "originalHeight": 350,
+      "originalBytes": 67005,
+      "sha256": "8155cbd0a33980f1efa2515a0cb2e151e8ec8e1c6c904f10e1a3165fa154d6e8",
+      "decodedSha256": "e628fdb4f1325250dd8d8d672706587dccffb7d05913e6ac1f163acc9f04465a",
+      "differenceHash": "6767e3e3434ed6d6",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/cooling-tower-replacement.webp",
+      "outputWidth": 263,
+      "outputHeight": 350,
+      "outputBytes": 22642,
+      "matchedOriginals": [
+        "49_COOLING TOWER REPLACEMENT.jpg"
+      ]
+    },
+    {
+      "sourceFilename": "50_HI RISE.jpg",
+      "id": "high-rise-building",
+      "title": "High-rise building",
+      "category": "Architecture",
+      "alt": "High-rise building with balconies, a curved lower facade, and palm trees",
+      "originalWidth": 347,
+      "originalHeight": 350,
+      "originalBytes": 81454,
+      "sha256": "f8916b25169c3f4b214dc0b10a89b7b956ebef1b59c9688c6b4b84100a9053a9",
+      "decodedSha256": "87768f39e0a5a7f5941d03d66538fd0dc971926dfb2c8000a6d0e1318ec69d05",
+      "differenceHash": "97d2f9f971713259",
+      "published": true,
+      "duplicateOf": null,
+      "duplicateKind": null,
+      "outputFile": "src/assets/gallery/high-rise-building.webp",
+      "outputWidth": 347,
+      "outputHeight": 350,
+      "outputBytes": 27806,
+      "matchedOriginals": [
+        "50_HI RISE.jpg"
+      ]
+    }
+  ]
+}

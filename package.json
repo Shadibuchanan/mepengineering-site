@@ -1,0 +1,30 @@
+{
+  "name": "buchanan-mep-engineering",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "verify": "node scripts/verify-build.mjs",
+    "test": "playwright test tests/site.spec.ts tests/hero-carousel.spec.ts tests/gallery.spec.ts",
+    "test:motion": "playwright test tests/motion.spec.ts",
+    "test:contact": "playwright test tests/contact.spec.ts",
+    "qa:capture": "node scripts/capture.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@phosphor-icons/core": "^2.1.1",
+    "astro": "^7.3.5",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
+  }
+}

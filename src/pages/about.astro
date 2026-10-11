@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PillLink from '../components/PillLink.astro';
+import Team from '../components/Team.astro';
+import officeImage from '../assets/team/our-office.png';
+const principles = [
+  { number: '01', title: 'Municipal plan review', text: 'We prepare notes and details specific to each city, drawing on comments from municipal reviewers on previous projects.' },
+  { number: '02', title: 'Plan coordination', text: 'We coordinate mechanical, electrical, and plumbing systems with the architectural and structural plans.' },
+  { number: '03', title: 'Engineering oversight', text: 'Our team includes two licensed Professional Engineers who provide engineering oversight and quality control, with signed and sealed plans for permitting.' },
+];
+// Project scale reported in the supplied original portfolio.html.
+const experience = [
+  { value: '35,000', unit: 'sq ft', title: 'Custom residential plans', text: 'Residential designs for homes up to 35,000 square feet.' },
+  { value: '1,000', unit: 'units', title: 'Residential communities', text: 'Engineering for entire residential and rental communities up to 1,000 units.' },
+  { value: '21', unit: 'stories', title: 'New high-rise buildings', text: 'Design experience with new high-rise buildings up to 21 stories.' },
+  { value: '45', unit: 'stories', title: 'High-rise project work', text: 'Additional project experience in high-rise buildings up to 45 stories.' },
+];
+---
+<BaseLayout title="About Our Firm" description="Buchanan P.E. Consulting has provided coordinated MEP engineering for custom homes, hospitality, and commercial spaces throughout Florida since 2001.">
+  <section class="container page-intro about-intro" data-stagger>
+    <p class="eyebrow" data-reveal>About our firm</p>
+    <h1 class="display-title" data-reveal>Buchanan<br /><em>P.E. Consulting</em></h1>
+    <div class="about-deck" data-reveal><p class="body-copy">We provide mechanical, electrical, and plumbing engineering for residential, commercial, and industrial projects throughout Florida. Our firm has worked with architects, contractors, developers, and owners since 2001.</p></div>
+  </section>
+
+  <figure class="container about-image" style={{ '--source-width': `${officeImage.width}px` }} data-reveal="image">
+    <div class="photo-cutout about-image__crop"><Image src={officeImage} alt="Buchanan P.E. Consulting office building in Margate, Florida" widths={[390, 640, 960, officeImage.width]} sizes="min(1115px, calc(100vw - clamp(44px, 6vw, 84px)))" format="webp" quality={88} loading="eager" /></div>
+    <figcaption>Buchanan P.E. Consulting · Margate, Florida</figcaption>
+  </figure>
+
+  <Team />
+
+  <section class="container section split-layout our-story">
+    <p class="eyebrow" data-reveal>Our experience</p>
+    <div>
+      <h2 class="section-title" data-reveal>MEP plans for<br /><em>Florida projects</em></h2>
+      <div class="story-copy" data-stagger>
+        <p class="body-copy" data-reveal>Our engineers have designed thousands of projects, including custom homes, residential communities, restaurants, retail stores, and commercial buildings.</p>
+        <p class="body-copy" data-reveal>We provide complete mechanical, electrical, and plumbing engineering for residential, commercial, and industrial projects. Our experience includes restaurants, retail stores, medical and dental facilities, schools, warehouses, and automotive dealerships. High-end custom homes are a particular focus of our practice.</p>
+        <p class="body-copy" data-reveal>Our experience with municipal plan reviewers informs the notes and details we prepare for each city. We provide coordinated, permit-ready, signed and sealed MEP plans.</p>
+      </div>
+      <PillLink href="/services/">Explore our expertise</PillLink>
+    </div>
+  </section>
+
+  <section class="container experience-section" aria-labelledby="experience-title">
+    <div class="experience-heading" data-stagger><p class="eyebrow" data-reveal>Project experience</p><h2 id="experience-title" class="section-title" data-reveal>Homes, communities,<br /><em>and high-rise buildings</em></h2></div>
+    <div class="experience-grid" data-stagger>{experience.map(item => <article data-reveal><p class="experience-value">{item.value}<span>{item.unit}</span></p><h3>{item.title}</h3><p class="experience-copy">{item.text}</p></article>)}</div>
+    <div class="specialist-experience" data-reveal><p class="eyebrow">Specialized projects</p><p>Our specialized projects have included a temporary 60,000-square-foot air-conditioned tent, air-conditioned pool areas, genetic laboratories, and clean rooms.</p></div>
+  </section>
+
+  <section class="principles-section">
+    <div class="container section">
+      <div class="principles-heading" data-stagger><p class="eyebrow" data-reveal>Our process</p><h2 class="section-title" data-reveal>Coordination and<br /><em>permit documentation</em></h2></div>
+      <div class="principles" data-stagger>{principles.map((principle) => <article data-reveal><span class="principle-number">{principle.number}</span><h3>{principle.title}</h3><p>{principle.text}</p></article>)}</div>
+    </div>
+  </section>
+
+  <section class="container section split-layout collaboration">
+    <p class="eyebrow" data-reveal>Project inquiries</p>
+    <div data-reveal><h2 class="section-title">Request an<br /><em>engineering proposal</em></h2><p class="body-copy">Contact our team with your project location, building type, and required engineering services.</p><PillLink href="/contact/">Contact our team</PillLink></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-intro h1 { margin-top: 28px; }
+  .about-deck { margin-top: 28px; max-width: 780px; }
+  .about-deck p { margin: 0; }
+  .about-image { margin-top: 0; margin-bottom: 0; max-width: var(--source-width); }
+  .about-image__crop { border-radius: 18px; overflow: hidden; }
+  .about-image img { width: 100%; height: auto; border-radius: 3px; }
+  figcaption { display: flex; align-items: center; gap: 24px; margin-top: 16px; font-size: 14px; color: var(--muted, #646b61); }
+  .story-copy { margin: 32px 0; max-width: 720px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
+  .our-story { padding-top: 48px; border-top: 1px solid var(--line); }
+  .story-copy p { margin: 0 0 20px; }
+  .story-copy p:first-child { grid-column: 1 / -1; font-size: 20px; line-height: 1.6; color: #191c18; max-width: 690px; }
+  .experience-section { padding-bottom: clamp(70px, 8vw, 120px); }
+  .experience-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; border-top: 1px solid var(--line); padding-top: 40px; }
+  .experience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; margin-top: 50px; }
+  .experience-grid article { border-top: 1px solid var(--line); padding-top: 28px; }
+  .experience-value { font-size: clamp(36px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; }
+  .experience-value span { display: block; font-size: 14px; color: var(--muted); letter-spacing: 0; margin-top: 12px; }
+  .experience-grid h3 { font-size: 20px; letter-spacing: -.025em; line-height: 1.3; margin-top: 28px; }
+  .experience-copy { font-size: 18px; line-height: 1.7; color: var(--muted); margin-top: 12px; max-width: 29ch; }
+  .specialist-experience { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; border-top: 1px solid var(--line); margin-top: 45px; padding-top: 28px; }
+  .specialist-experience > p:last-child { color: var(--muted); font-size: 18px; max-width: 650px; line-height: 1.8; }
+  .principles-section { background: #e9ede4; }
+  .principles-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px; margin-top: 60px; }
+  .principles article { border-top: 1px solid #bfc8b4; padding-top: 18px; }
+  .principle-number { font-size: 14px; color: #56614d; }
+  .principles h3 { font-size: clamp(21px, 2.2vw, 29px); letter-spacing: -.04em; font-weight: 400; margin: 36px 0 17px; }
+  .principles article p { font-size: 18px; color: #606957; line-height: 1.7; margin: 0; max-width: 350px; }
+  .collaboration .body-copy { max-width: 610px; margin: 28px 0; }
+  @media (max-width: 760px) { .about-deck { grid-template-columns: 1fr; gap: 25px; margin-top: 28px; } .about-deck p { margin-left: 0; } .story-copy { grid-template-columns: 1fr; } .principles-heading { grid-template-columns: 1fr; gap: 25px; } .principles { grid-template-columns: 1fr; gap: 32px; margin-top: 38px; } .principles h3 { margin-top: 18px; } .principles article p { max-width: 510px; } }
+  @media (max-width: 420px) { figcaption { align-items: start; flex-direction: column; gap: 6px; } }
+  @media (max-width: 900px) { .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 28px; } }
+  @media (max-width: 760px) { .experience-heading, .specialist-experience { grid-template-columns: 1fr; gap: 24px; } .experience-grid { margin-top: 36px; } .experience-grid h3 { margin-top: 24px; } }
+  @media (max-width: 520px) { .experience-grid { grid-template-columns: 1fr; } }
+</style>

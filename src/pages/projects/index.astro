@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects, projectIndex, sectors } from '../../data/projects';
+import { legacyProjects } from '../../data/legacy-projects';
+---
+<BaseLayout title="Projects" description="Explore Buchanan’s Florida project portfolio: restaurants, retail spaces, recreation, custom homes, and more.">
+  <section class="page-intro container" data-stagger><p class="eyebrow" data-reveal>Our portfolio</p><h1 class="display-title" data-reveal>Engineering<br /><em>projects in Florida</em></h1><div class="portfolio-intro" data-reveal><p class="body-copy muted">Our project experience includes custom homes, residential communities, restaurants, retail stores, offices, medical facilities, schools, and automotive dealerships. Browse selected projects by name, city, or building type.</p></div></section>
+  <section class="container portfolio" aria-label="Project portfolio">
+    <div class="portfolio-tools"><div class="filter-list" role="group" aria-label="Filter projects by sector">{['All',...sectors].map(sector => <button type="button" class:list={['filter-button',{active:sector==='All'}]} data-filter={sector} aria-pressed={sector==='All'}>{sector === 'All' ? 'All projects' : sector}</button>)}</div><label class="project-search"><Icon name="search" /><span class="sr-only">Search projects by name or location</span><input type="search" id="project-search" placeholder="Search name or city" /></label></div>
+    <div class="results-meta"><p id="project-results" aria-live="polite">{projects.length} featured projects</p></div>
+    <div class="portfolio-grid" data-stagger>{projects.map((project,index) => <ProjectCard project={project} index={index} alignRows portfolio />)}</div>
+    <div id="no-photo-results" class="empty-state" hidden><h2>See the project directory.</h2><p>Matching projects without photographs are listed below.</p></div>
+    <div id="no-results" class="empty-state" hidden><h2>No matching projects.</h2><p>Try a different name, city, or sector.</p><button type="button" id="clear-filters">Clear filters <Icon name="arrowRight" /></button></div>
+    <details class="project-directory" id="project-directory">
+      <summary><div><h2>Project <em>directory</em></h2></div><span class="directory-toggle"><span>View project list</span><Icon name="plus" /></span></summary>
+      <div class="directory-table" data-directory-group>
+        <div class="directory-head" aria-hidden="true"><span>Project</span><span>Location</span><span>Sector</span></div>
+        {projectIndex.map(project => <div class="directory-row" data-directory-sector={project.sector} data-directory-search={`${project.name} ${project.location} ${project.sector}`.toLowerCase()}><h3>{project.name}</h3><span>{project.location}</span><span>{project.sector}</span></div>)}
+      </div>
+      <section class="legacy-experience" data-directory-group aria-labelledby="legacy-title">
+        <div class="legacy-heading"><h3 id="legacy-title">Additional <em>experience.</em></h3><p>A selection of clients, communities, and public projects from our earlier work.</p></div>
+        <div class="legacy-grid">{legacyProjects.map(project => <div class="legacy-entry" data-directory-sector={project.sector || ''} data-directory-search={`${project.name} ${project.location || ''} ${project.sector || ''}`.toLowerCase()}><h4>{project.name}</h4>{(project.location || project.sector) && <p>{[project.location, project.sector].filter(Boolean).join(' · ')}</p>}</div>)}</div>
+      </section>
+    </details>
+  </section>
+</BaseLayout>
+<script>
+  const search = document.querySelector<HTMLInputElement>('#project-search');
+  const filters = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-grid [data-sector]'));
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-directory-sector]'));
+  const directoryGroups = Array.from(document.querySelectorAll<HTMLElement>('[data-directory-group]'));
+  const directory = document.querySelector<HTMLDetailsElement>('#project-directory');
+  const resultText = document.querySelector('#project-results');
+  const empty = document.querySelector<HTMLElement>('#no-results');
+  const noPhotos = document.querySelector<HTMLElement>('#no-photo-results');
+  let selected = 'All';
+  const normalize = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const url = new URL(window.location.href);
+  const initialSector = url.searchParams.get('sector');
+  if (initialSector && filters.some(button => button.dataset.filter === initialSector)) selected = initialSector;
+  if (search) search.value = url.searchParams.get('q') || '';
+  function update(animateResults = false) {
+    const query = normalize(search?.value.trim() || '');
+    let shownCards = 0;
+    let shownRows = 0;
+    cards.forEach(card => { const match = (selected === 'All' || card.dataset.sector === selected) && normalize(card.dataset.search || '').includes(query); card.hidden = !match; if (match) shownCards++; });
+    rows.forEach(row => { const match = (selected === 'All' || row.dataset.directorySector === selected) && normalize(row.dataset.directorySearch || '').includes(query); row.hidden = !match; if (match) shownRows++; });
+    directoryGroups.forEach(group => { group.hidden = !group.querySelector('[data-directory-sector]:not([hidden])'); });
+    filters.forEach(button => { const active = button.dataset.filter === selected; button.classList.toggle('active', active); button.setAttribute('aria-pressed',String(active)); });
+    if (directory) { directory.hidden = shownRows === 0; if (query || selected !== 'All') directory.open = true; }
+    if (resultText) resultText.textContent = `${shownCards} featured project${shownCards===1?'':'s'}${query || selected!=='All' ? ` · ${shownRows} directory entr${shownRows===1?'y':'ies'}` : ''}`;
+    if (empty) empty.hidden = shownCards + shownRows > 0;
+    if (noPhotos) noPhotos.hidden = shownCards > 0 || shownRows === 0;
+    const next = new URL(window.location.href);
+    if (selected === 'All') next.searchParams.delete('sector'); else next.searchParams.set('sector',selected);
+    if (search?.value.trim()) next.searchParams.set('q',search.value.trim()); else next.searchParams.delete('q');
+    history.replaceState(null,'',next);
+    if (animateResults) document.dispatchEvent(new Event('portfolio:updated'));
+  }
+  filters.forEach(button => button.addEventListener('click',() => { selected = button.dataset.filter || 'All'; update(true); }));
+  search?.addEventListener('input',() => update(true));
+  document.querySelector('#clear-filters')?.addEventListener('click',() => { selected='All'; if(search) search.value=''; update(true); search?.focus(); });
+  update();
+</script>
+<style>
+  .portfolio-intro { max-width:780px; }
+  .portfolio { padding-bottom:100px; }
+  .portfolio-tools { border-bottom:1px solid var(--line); padding-block:0 24px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+  .filter-list { display:flex; gap:5px; flex-wrap:wrap; }
+  .filter-button { border:0; border-radius:999px; padding:10px 13px; background:transparent; font-size:14px; transition:background .2s; }
+  .filter-button:hover { background:#e8eae2; }
+  .filter-button.active { color:var(--paper); background:var(--ink); }
+  .project-search { display:flex; align-items:center; gap:10px; font-size:16px; color:var(--muted); }
+  .project-search input { border:0; border-bottom:1px solid var(--line); padding:10px 0; width:200px; background:transparent; color:var(--ink); font-size:16px; border-radius:0; }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .results-meta { display:flex; gap:20px; padding-block:24px 32px; font-size:14px; color:var(--muted); }
+  .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:52px 32px; }
+  .empty-state { padding:60px 20px; text-align:center; border:1px solid var(--line); }
+  .empty-state h2 { font-size:32px; }
+  .empty-state p { margin-top:12px; color:var(--muted); }
+  .empty-state button { border:0; border-bottom:1px solid; display:inline-flex; align-items:center; gap:18px; background:none; padding:8px 0; margin-top:20px; font-size:14px; }
+  .project-directory { margin-top:100px; border-block:1px solid var(--line); }
+  .project-directory summary { display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding-block:32px; list-style:none; gap:20px; }
+  .project-directory summary::-webkit-details-marker { display:none; }
+  .project-directory h2 { font-size:clamp(34px,4vw,48px); line-height:1.1; }
+  .directory-toggle { display:flex; align-items:center; gap:26px; font-size:14px; }
+  .directory-toggle :global(.icon) { font-size:25px; transition:transform .2s; }
+  .project-directory[open] .directory-toggle :global(.icon) { transform:rotate(45deg); }
+  .directory-table { padding-bottom:25px; }
+  .directory-head,.directory-row { display:grid; grid-template-columns:1.3fr 1.3fr .6fr; gap:24px; align-items:baseline; padding-block:20px; border-top:1px solid var(--line); font-size:16px; }
+  .directory-head { font-size:14px; color:var(--muted); }
+  .directory-row h3 { font-size:18px; }
+  .directory-row span { color:var(--muted); }
+  .legacy-experience { padding-block: 22px 42px; }
+  .legacy-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 28px; margin-bottom: 28px; }
+  .legacy-heading h3 { font-size: 34px; letter-spacing: -.045em; font-weight: 400; line-height: 1.15; }
+  .legacy-heading > p { font-size: 18px; line-height: 1.7; color: var(--muted); max-width: 460px; }
+  .legacy-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 35px; }
+  .legacy-entry { border-top: 1px solid var(--line); padding-block: 18px; }
+  .legacy-entry h4 { font-weight: 500; font-size: 18px; line-height: 1.5; margin: 0; }
+  .legacy-entry p { font-size: 14px; color: var(--muted); margin-top: 8px; }
+  @media(max-width:800px) { .legacy-grid { grid-template-columns: repeat(2, 1fr); column-gap: 25px; } .legacy-heading { display: block; } .legacy-heading > p { margin-top: 14px; } }
+  @media(max-width:520px) { .legacy-grid { grid-template-columns: 1fr; } .legacy-experience { padding-bottom: 25px; } }
+  @media(max-width:800px) { .portfolio-grid { grid-template-columns:repeat(2,1fr); gap:38px 24px; } .directory-row { grid-template-columns:1fr 1fr; gap:8px 20px; } .directory-row span:last-child { font-size:14px; grid-column:2; } .directory-head { display:none; } }
+  @media(max-width:520px) { .portfolio-grid { grid-template-columns:1fr; gap:38px; } .portfolio-tools { align-items:flex-start; gap:18px; } .filter-button { padding:10px 12px; } .project-search { width:100%; } .project-search input { width:100%; } .project-directory { margin-top:60px; } .directory-toggle > span { display:none; } .directory-row { grid-template-columns:1fr; gap:6px; } .directory-row span:last-child { grid-column:1; } }
+</style>

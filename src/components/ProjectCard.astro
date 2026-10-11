@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import Icon from './Icon.astro';
+interface Props { project: Project; index?: number; alignRows?: boolean; portfolio?: boolean; }
+const { project, index, alignRows = false, portfolio = false } = Astro.props;
+const imageWidth = Math.min(project.image.width, 660);
+const compactImage = project.image.width < 600;
+---
+<article class:list={['project-card', { 'project-card--zoom': project.image.width >= 1000, 'project-card--aligned': alignRows, 'project-card--portfolio': portfolio }]} style={{ '--project-image-width': `${imageWidth}px` }} data-reveal data-sector={project.sector} data-search={`${project.name} ${project.location} ${project.sector}`.toLowerCase()}>
+  <a href={`/projects/${project.slug}/`} aria-label={`Explore ${project.name}, ${project.location}`}>
+    <div class="project-card__media"><div class:list={['project-card__image', { 'photo-cutout': !compactImage }]}><Image src={project.image} alt={project.alt} width={imageWidth} format="webp" quality={85} loading="lazy" /><span class="project-card__open"><Icon /></span>{index !== undefined && <span class="project-card__number">{String(index+1).padStart(2,'0')}</span>}</div></div>
+    <div class="project-card__meta"><span>{project.location}</span><span class="project-card__sector">{portfolio && <span aria-hidden="true">·</span>}{project.sector}</span></div>
+    <h3>{project.name}</h3>
+  </a>
+</article>
+<style>
+  .project-card { min-width: 0; width: 100%; max-width: var(--project-image-width); align-self: start; }
+  /* Share image, metadata, and title rows without changing photo proportions. */
+  .project-card--aligned { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; max-width: none; align-self: stretch; }
+  .project-card--aligned > a { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; min-width: 0; }
+  .project-card--aligned :is(.project-card__meta, h3) { align-self: start; }
+  .project-card__media { display: grid; place-items: center; min-width: 0; }
+  .project-card--portfolio .project-card__media { place-items: end start; }
+  .project-card__image { position: relative; width: 100%; max-width: var(--project-image-width); overflow: hidden; border-radius: 16px; background: #e2e4dd; }
+  .project-card__image img { width: 100%; height: auto; transition: transform .8s var(--ease-out); }
+  .project-card--zoom a:is(:hover, :focus-visible) img { transform: scale(1.045); }
+  .project-card__open { position: absolute; bottom: 18px; right: 18px; display: flex; align-items: center; justify-content: center; border-radius: 50%; height: 43px; width: 43px; background: var(--paper); font-size: 19px; opacity: 0; transform: translateY(7px); transition: opacity .3s, transform .4s var(--ease-out); }
+  .project-card a:hover .project-card__open, .project-card a:focus-visible .project-card__open { opacity: 1; transform: translateY(0); }
+  .project-card__number { position: absolute; top: 17px; left: 17px; color: white; padding: 4px 10px; background: #191c18c0; border-radius: 20px; font-size: 14px; }
+  .project-card__meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-top: 18px; font-size: 15px; color: var(--muted); }
+  .project-card--portfolio .project-card__meta { justify-content: flex-start; gap: 4px 10px; }
+  .project-card--portfolio .project-card__sector { display: inline-flex; align-items: center; gap: 10px; }
+  h3 { font-size: 24px; letter-spacing: -.025em; line-height: 1.25; margin-top: 8px; }
+  @media(max-width:600px) { .project-card__open { opacity: 1; transform: none; height: 36px; width: 36px; } h3 { font-size: 22px; } }
+</style>

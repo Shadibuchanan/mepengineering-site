@@ -1,0 +1,17 @@
+---
+import PillLink from './PillLink.astro';
+import { site } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top"><p>MEP engineering throughout Florida</p><a class="footer-top__email" href={`mailto:${site.email}`}>{site.email}</a></div>
+    <div class="footer-invitation" data-reveal><h2>Discuss <em>your project.</em></h2><PillLink href="/contact/" light>Request a proposal</PillLink></div>
+    <div class="footer-bottom">
+      <a class="wordmark" href="/"><span>BUCHANAN.</span><small>P.E. CONSULTING</small></a>
+      <p>Mechanical, electrical and plumbing consulting for residential, commercial and civic projects. Serving Florida since 2001.</p>
+      <address>{site.address}<br />{site.city}<br /><a href={site.phoneHref}>{site.phone}</a></address>
+      <nav aria-label="Footer navigation"><a href="/projects/">Projects</a><a href="/#photo-gallery">Photo gallery</a><a href="/services/">Expertise</a><a href="/about/">About us</a><a href="/contact/">Contact</a></nav>
+    </div>
+    <div class="footer-legal"><span>© {new Date().getFullYear()} {site.legalName}</span><span>Engineering throughout Florida</span><a href="/privacy/">Privacy</a></div>
+  </div>
+</footer>

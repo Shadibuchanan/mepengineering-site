@@ -1,0 +1,53 @@
+---
+import PillLink from './PillLink.astro';
+import Icon from './Icon.astro';
+interface Props { hero?: boolean; }
+const { hero = false } = Astro.props;
+const links = [{ href: '/projects/', text: 'Projects' }, { href: '/services/', text: 'Expertise' }, { href: '/about/', text: 'About us' }, { href: '/contact/', text: 'Contact' }];
+---
+<header class:list={['site-header', { 'site-header--hero': hero }]}>
+  <a class="wordmark" href="/" aria-label="Buchanan P.E. Consulting home"><span>BUCHANAN<span class="wordmark__period">.</span></span><small>P.E. CONSULTING</small></a>
+  <nav class="desktop-nav" aria-label="Main navigation">{links.map(link => <a href={link.href} aria-current={Astro.url.pathname.startsWith(link.href) ? 'page' : undefined}>{link.text}</a>)}</nav>
+  <div class="header-action"><PillLink href="/contact/" light={hero}>Let’s talk</PillLink></div>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu" /></button>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>{links.map((link, i) => <a href={link.href} aria-current={Astro.url.pathname.startsWith(link.href) ? 'page' : undefined}><small>0{i+1}</small>{link.text}<Icon /></a>)}<a class="mobile-nav__email" href="mailto:info@mepengineers.com">info@mepengineers.com</a></nav>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#mobile-nav');
+  if (toggle && nav) {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let openingAnimations: Animation[] = [];
+    const cancelOpening = () => {
+      openingAnimations.forEach(animation => animation.cancel());
+      openingAnimations = [];
+    };
+    const setOpen = (open: boolean) => {
+      cancelOpening();
+      nav.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      document.body.classList.toggle('menu-open', open);
+      if (!open || reducedMotion.matches) return;
+
+      const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      openingAnimations.push(nav.animate(
+        [{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 320, easing },
+      ));
+      nav.querySelectorAll('a').forEach((link, index) => {
+        openingAnimations.push(link.animate(
+          [{ opacity: 0, transform: 'translateY(7px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 280, delay: 35 + index * 30, easing, fill: 'backwards' },
+        ));
+      });
+    };
+    reducedMotion.addEventListener('change', e => { if (e.matches) cancelOpening(); });
+    nav.addEventListener('focusin', cancelOpening);
+    toggle.addEventListener('click', () => setOpen(Boolean(nav.hidden)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !nav.hidden) { setOpen(false); toggle.focus(); } });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('click', e => { if (!nav.hidden && e.target instanceof Node && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false); });
+    matchMedia('(min-width: 801px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+  }
+</script>

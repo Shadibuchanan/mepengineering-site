@@ -1,0 +1,12 @@
+# IONOS Windows supports Apache-style redirects through its rewrite extension.
+# Keep this file to rewrite directives; IIS defaults/MIME/errors use web.config.
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^portfolio\.html$ /projects/ [R=301,L]
+RewriteRule ^mechanical\.html$ /services/mechanical/ [R=301,L]
+RewriteRule ^electrical\.html$ /services/electrical/ [R=301,L]
+RewriteRule ^plumbing\.html$ /services/plumbing/ [R=301,L]
+RewriteRule ^hoods\.html$ /services/kitchen-hoods/ [R=301,L]
+RewriteRule ^fire-alarm\.html$ /services/fire-alarm/ [R=301,L]
+RewriteRule ^fire-sprinkler\.html$ /services/fire-sprinkler/ [R=301,L]

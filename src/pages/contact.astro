@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import PhotoFrame from '../components/PhotoFrame.astro';
+import cafePhoto from '../assets/projects/cafe-bastille-fort-lauderdale.webp';
+---
+<BaseLayout title="Contact" description="Start your next project with Buchanan P.E. Consulting. Contact our Florida MEP engineering team for a project proposal.">
+  <section class="container page-intro contact-intro" data-stagger>
+    <p class="eyebrow" data-reveal>Contact</p>
+    <h1 class="display-title" data-reveal>Request an<br /><em>engineering proposal</em></h1>
+  </section>
+  <section class="container contact-content" aria-label="Contact our team">
+    <div class="contact-details">
+      <h2 class="contact-lead">Buchanan P.E. Consulting</h2>
+      <p class="body-copy">Contact us for mechanical, electrical, plumbing, kitchen hood, fire alarm, and fire sprinkler design. Include your project location, building type, and the services you need.</p>
+      <dl>
+        <div><dt>EMAIL</dt><dd><a href={`mailto:${site.email}`}>{site.email}<Icon name="arrowUpRight" /></a></dd></div>
+        <div><dt>CALL</dt><dd><a href={site.phoneHref}>{site.phone}<Icon name="arrowUpRight" /></a></dd></div>
+        <div><dt>VISIT</dt><dd><address>{site.address}<br />{site.city}</address><a href="https://www.google.com/maps/search/?api=1&query=6191+W+Atlantic+Blvd+Margate+FL+33063" target="_blank" rel="noopener noreferrer" class="directions">Get directions<span class="sr-only"> (opens in a new tab)</span><Icon name="arrowUpRight" /></a></dd></div>
+      </dl>
+      <p class="florida-note">Serving residential, commercial, and industrial projects throughout Florida.</p>
+      <PhotoFrame class="contact-photo" src={cafePhoto} alt="Café Bastille's landscaped terrace and storefront in Fort Lauderdale" caption="Café Bastille · Fort Lauderdale, Florida" variant="compact" />
+    </div>
+    <ContactForm />
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-intro h1 { margin-top: 28px; }
+  .contact-content { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(45px, 7vw, 110px); padding-bottom: 100px; }
+  .contact-lead { max-width: 360px; font-size: clamp(24px, 2.5vw, 33px); font-weight: 400; letter-spacing: -.04em; line-height: 1.24; margin: 0 0 21px; }
+  .contact-details > .body-copy { max-width: 430px; }
+  dl { margin: 38px 0; }
+  dl > div { margin-bottom: 27px; }
+  dt { font-size: 14px; color: var(--muted, #646b61); margin-bottom: 10px; }
+  dd { margin: 0; }
+  dd a { display: inline-flex; align-items: center; gap: 15px; font-size: 18px; text-decoration: none; }
+  dd a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  address { font-size: 18px; line-height: 1.55; font-style: normal; }
+  dd .directions { margin-top: 14px; font-size: 14px; border-bottom: 1px solid #aab29e; padding-bottom: 4px; }
+  .florida-note { font-size: 18px; line-height: 1.7; color: var(--muted, #646b61); }
+  .contact-details :global(.contact-photo) { margin-top: 35px; }
+  @media (max-width: 900px) { .contact-content { gap: 45px; grid-template-columns: .8fr 1.2fr; } }
+  @media (max-width: 700px) { .contact-content { grid-template-columns: 1fr; gap: 55px; padding-bottom: 75px; } .contact-details > .body-copy, .contact-lead { max-width: 460px; } dl { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 30px 0; } dl > div { margin: 0; } }
+  @media (max-width: 520px) { dl { grid-template-columns: 1fr; } }
+</style>
